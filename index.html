@@ -45,7 +45,7 @@
 
     /* Isometric 3D Logo Glow */
     .monolith-shadow {
-      filter: drop-shadow(0 10px 18px rgba(0, 57, 166, 0.45));
+      filter: drop-shadow(0 8px 16px rgba(0, 57, 166, 0.45));
     }
 
     /* Red Siren Flash Alarm */
@@ -96,63 +96,36 @@
   <header class="bg-slate-900/95 backdrop-blur border-b border-slate-800 sticky top-1 z-40">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between gap-3">
       
-      <!-- Brand & Isometric Monolith Logo Replica -->
+      <!-- Brand & Isometric Monolith Notebook Logo -->
       <div class="flex items-center gap-3">
-        <div class="w-11 h-11 sm:w-12 sm:h-12 flex-shrink-0 monolith-shadow cursor-pointer transition transform hover:scale-105" title="Калькулятор Монолит — Патриот">
-          <svg viewBox="0 0 200 200" class="w-full h-full">
-            <defs>
-              <linearGradient id="blueSideGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#1d4ed8" />
-                <stop offset="100%" stop-color="#0f2b7a" />
-              </linearGradient>
-              <linearGradient id="redBottomGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#ef4444" />
-                <stop offset="100%" stop-color="#991b1b" />
-              </linearGradient>
-              <linearGradient id="whiteArrowGrad" x1="0%" y1="100%" x2="0%" y2="0%">
-                <stop offset="0%" stop-color="#cbd5e1" />
-                <stop offset="100%" stop-color="#ffffff" />
-              </linearGradient>
-            </defs>
+        <!-- Аппликационная иконка с оригинальным 3D-логотипом -->
+        <div class="w-12 h-12 sm:w-14 sm:h-14 flex-shrink-0 monolith-shadow cursor-pointer transition transform hover:scale-105 flex items-center justify-center relative rounded-2xl overflow-hidden bg-white border-2 border-blue-500/40 shadow-lg" title="Блокнот Монолит — Патриотический Дозор Чистоты">
+          <!-- 
+            Основное изображение: ищет logo.png, logo.jpg или Gemini_Generated_Image_sb0jjosb0jjosb0j.jpeg.
+            На GitHub файл сохраняется как logo.png рядом с index.html и отображается точь-в-точь как на картинке.
+          -->
+          <img 
+            id="brandLogoImg" 
+            src="logo.png" 
+            alt="Блокнот Монолит" 
+            class="w-full h-full object-cover block"
+            onerror="
+              if (this.src.indexOf('logo.png') !== -1) {
+                this.src = 'Gemini_Generated_Image_sb0jjosb0jjosb0j.jpeg';
+              } else if (this.src.indexOf('Gemini_Generated_Image') !== -1) {
+                this.src = 'logo.jpg';
+              } else {
+                this.style.display='none';
+                document.getElementById('brandLogoFallback').style.display='flex';
+              }
+            "
+          />
 
-            <!-- White Ascending Arrow (Top Peak) -->
-            <polygon points="100,18 138,55 116,55 116,78 84,78 84,55 62,55" fill="url(#whiteArrowGrad)" stroke="#94a3b8" stroke-width="1.5"/>
-
-            <!-- Main Isometric Cube / Monolith Body -->
-            <!-- Top Face -->
-            <polygon points="100,64 158,98 100,132 42,98" fill="#1e40af" stroke="#3b82f6" stroke-width="1.5" />
-            
-            <!-- Left Face (Blue Upper) -->
-            <polygon points="42,98 100,132 100,165 42,132" fill="url(#blueSideGrad)" />
-            <!-- Left Face (Red Lower Base) -->
-            <polygon points="42,132 100,165 100,186 42,154" fill="url(#redBottomGrad)" />
-
-            <!-- Right Face (Blue Upper with Calc Matrix) -->
-            <polygon points="100,132 158,98 158,132 100,165" fill="#172554" />
-            <!-- Right Face (Red Lower Base with Key =) -->
-            <polygon points="100,165 158,132 158,154 100,186" fill="#b91c1c" />
-
-            <!-- Monolith Digital Screen on Right Face -->
-            <polygon points="104,116 154,87 154,99 104,128" fill="#090d16" stroke="#38bdf8" stroke-width="1" />
-            <text x="110" y="121" fill="#38bdf8" font-size="11" font-weight="bold" font-family="'Share Tech Mono', monospace" transform="rotate(-18 110 121)">2026/67</text>
-
-            <!-- Calculator Buttons Grid (+, -, %, =) -->
-            <polygon points="104,133 118,125 118,134 104,142" fill="#1e3a8a" />
-            <text x="108" y="139" fill="#93c5fd" font-size="9" font-weight="bold" font-family="monospace">+</text>
-
-            <polygon points="122,123 136,115 136,124 122,132" fill="#1e3a8a" />
-            <text x="127" y="129" fill="#93c5fd" font-size="9" font-weight="bold" font-family="monospace">-</text>
-
-            <polygon points="140,113 154,105 154,114 140,122" fill="#1e3a8a" />
-            <text x="144" y="119" fill="#93c5fd" font-size="8" font-weight="bold" font-family="monospace">%</text>
-
-            <!-- Big Red Equals Button -->
-            <polygon points="138,143 154,134 154,152 138,160" fill="#dc2626" stroke="#f87171" stroke-width="0.8"/>
-            <text x="142" y="153" fill="#ffffff" font-size="11" font-weight="bold" font-family="monospace">=</text>
-
-            <!-- White Rising Chevron Outline on Left -->
-            <polyline points="46,126 46,95 86,72" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/>
-          </svg>
+          <!-- Аккуратный фоллбек, если изображение ещё не скопировано в папку -->
+          <div id="brandLogoFallback" style="display:none;" class="w-full h-full bg-gradient-to-br from-blue-900 via-slate-900 to-red-950 flex-col items-center justify-center text-center p-1 text-[9px] font-black text-white leading-tight">
+            <span>МОНОЛИТ</span>
+            <span class="text-[7px] text-blue-300">2024</span>
+          </div>
         </div>
 
         <div>
@@ -193,11 +166,22 @@
     </div>
   </header>
 
+  <!-- Mobile View Switcher (Tabs for Mobile Devices) -->
+  <div class="md:hidden max-w-7xl w-full mx-auto px-3 pt-3 flex gap-2">
+    <button id="tabBtnNotes" class="flex-1 py-2 px-3 rounded-xl bg-slate-800 border border-slate-700 text-slate-300 font-bold text-xs flex items-center justify-center gap-1.5">
+      <span>📜</span> <span>История помыслов</span>
+      <span id="mobileNotesBadge" class="ml-1 px-1.5 py-0.2 rounded-full bg-blue-600 text-[10px] text-white">1</span>
+    </button>
+    <button id="tabBtnEditor" class="flex-1 py-2 px-3 rounded-xl bg-blue-600 border border-blue-500 text-white font-bold text-xs flex items-center justify-center gap-1.5 shadow">
+      <span>✏️</span> <span>Редактор</span>
+    </button>
+  </div>
+
   <!-- Main Grid Container: Left Sidebar (History & Notes) | Right Editor Workspace -->
-  <main class="flex-1 max-w-7xl w-full mx-auto px-3 sm:px-6 py-4 flex flex-col md:flex-row gap-4 items-stretch">
+  <main class="flex-1 max-w-7xl w-full mx-auto px-3 sm:px-6 py-3 sm:py-4 flex flex-col md:flex-row gap-4 items-stretch">
     
-    <!-- LEFT SIDEBAR: History of Saved Notes & Folders (Fixed width on desktop) -->
-    <aside class="w-full md:w-80 lg:w-96 flex-shrink-0 flex flex-col gap-3">
+    <!-- LEFT SIDEBAR: History of Saved Notes & Folders -->
+    <aside id="sidebarPanel" class="w-full md:w-80 lg:w-96 flex-shrink-0 flex flex-col gap-3">
       
       <!-- Top Action: New Note Button -->
       <button id="btnCreateNote" class="w-full py-2.5 px-4 bg-gradient-to-r from-blue-700 via-blue-600 to-indigo-700 hover:from-blue-600 hover:to-indigo-600 text-white font-black text-xs uppercase tracking-wider rounded-2xl shadow-lg border border-blue-400/40 transition transform active:scale-95 flex items-center justify-center gap-2">
@@ -237,17 +221,17 @@
       </div>
 
       <!-- Notes History Chronicle List -->
-      <div class="bg-slate-900/90 border border-slate-800 rounded-2xl p-3.5 shadow-lg flex-1 flex flex-col min-h-[300px] md:min-h-[440px]">
+      <div class="bg-slate-900/90 border border-slate-800 rounded-2xl p-3.5 shadow-lg flex-1 flex flex-col min-h-[260px] md:min-h-[420px]">
         <div class="flex items-center justify-between pb-2 mb-2 border-b border-slate-800">
           <div class="flex items-center gap-1.5">
             <span class="text-sm">📜</span>
-            <span class="text-xs font-bold uppercase tracking-wider text-slate-300">История заметок</span>
+            <span class="text-xs font-bold uppercase tracking-wider text-slate-300">История помыслов</span>
           </div>
           <span class="text-[11px] font-semibold text-blue-400 font-mono" id="notesCountLabel">1 помысел</span>
         </div>
 
         <!-- Scrollable History List -->
-        <div id="notesList" class="flex-1 overflow-y-auto space-y-2 pr-1 max-h-[420px] md:max-h-[520px]">
+        <div id="notesList" class="flex-1 overflow-y-auto space-y-2 pr-1 max-h-[380px] md:max-h-[500px]">
           <!-- Notes cards dynamically injected here -->
         </div>
       </div>
@@ -265,7 +249,7 @@
         </div>
 
         <p class="text-[10px] text-slate-400 mb-2 leading-tight">
-          Пресекает сквернословие и числа <span class="text-red-400 font-mono">67, 52, 1488, 104, 666</span>.
+          Пресекает сквернословие, чужебесие и числа <span class="text-red-400 font-mono">67, 52, 1488, 104, 666</span>.
         </p>
 
         <!-- Canons Switches -->
@@ -291,15 +275,20 @@
 
     </aside>
 
-    <!-- RIGHT WORKSPACE: Active Note Editor (Takes remaining width and height) -->
-    <section class="flex-1 flex flex-col gap-3 min-w-0">
+    <!-- RIGHT WORKSPACE: Active Note Editor -->
+    <section id="editorContainer" class="flex-1 flex flex-col gap-3 min-w-0">
       
       <!-- Editor Card -->
-      <div id="editorContainer" class="bg-slate-900/90 border border-slate-800 rounded-2xl p-4 sm:p-5 shadow-xl flex-1 flex flex-col relative transition-all duration-300 min-h-[500px]">
+      <div class="bg-slate-900/90 border border-slate-800 rounded-2xl p-4 sm:p-5 shadow-xl flex-1 flex flex-col relative transition-all duration-300 min-h-[460px]">
         
         <!-- Editor Header (Title, Folder Selector, Actions) -->
         <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 pb-3 border-b border-slate-800">
-          <div class="flex-1 min-w-0">
+          
+          <div class="flex items-center gap-2 flex-1 min-w-0">
+            <!-- Mobile back button -->
+            <button id="btnMobileBackToList" class="md:hidden px-2 py-1 bg-slate-800 text-slate-300 text-xs rounded-lg border border-slate-700 hover:text-white">
+              ← Список
+            </button>
             <input 
               type="text" 
               id="noteTitle" 
@@ -341,7 +330,7 @@
           <textarea 
             id="noteContent" 
             placeholder="Пишите мысли праведные, созидательные и чистые... Выберите помысел в истории слева или пишите здесь!" 
-            class="w-full flex-1 min-h-[380px] bg-slate-950/40 border border-slate-800/80 rounded-xl p-4 text-sm sm:text-base text-slate-100 placeholder-slate-600 leading-relaxed focus:outline-none focus:border-blue-500/70 transition resize-none font-sans"
+            class="w-full flex-1 min-h-[340px] sm:min-h-[400px] bg-slate-950/40 border border-slate-800/80 rounded-xl p-4 text-sm sm:text-base text-slate-100 placeholder-slate-600 leading-relaxed focus:outline-none focus:border-blue-500/70 transition resize-none font-sans"
             spellcheck="false"
           ></textarea>
         </div>
@@ -401,7 +390,6 @@
       </div>
 
       <div class="flex-1 overflow-y-auto py-4 space-y-4 pr-1 text-xs sm:text-sm text-slate-200 leading-relaxed">
-        <!-- Prayer 1 -->
         <div class="p-3.5 rounded-2xl bg-slate-950/80 border border-slate-800 hover:border-blue-600/50 transition">
           <div class="flex items-center justify-between mb-1.5">
             <span class="font-bold text-amber-300">Молитва Оптинских старцев на начало дня</span>
@@ -412,7 +400,6 @@
           </p>
         </div>
 
-        <!-- Prayer 2 -->
         <div class="p-3.5 rounded-2xl bg-slate-950/80 border border-slate-800 hover:border-blue-600/50 transition">
           <div class="flex items-center justify-between mb-1.5">
             <span class="font-bold text-amber-300">Молитва о защите Отечества и народа</span>
@@ -423,7 +410,6 @@
           </p>
         </div>
 
-        <!-- Prayer 3 -->
         <div class="p-3.5 rounded-2xl bg-slate-950/80 border border-slate-800 hover:border-blue-600/50 transition">
           <div class="flex items-center justify-between mb-1.5">
             <span class="font-bold text-amber-300">Благословение перед началом всякого труда</span>
@@ -527,7 +513,7 @@
     </div>
   </div>
 
-  <!-- MODAL: Награда за Число 777 (HIDDEN BY DEFAULT - Opens ONLY on typing 777) -->
+  <!-- MODAL: Награда за Число 777 -->
   <div id="prize777Modal" class="fixed inset-0 bg-black/85 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden" style="display: none;">
     <div class="bg-gradient-to-b from-slate-900 via-amber-950/40 to-slate-900 border-2 border-amber-400 rounded-3xl max-w-md w-full p-6 shadow-[0_0_60px_rgba(245,158,11,0.4)] relative text-center">
       <button id="closePrizeModal" class="absolute top-4 right-4 text-amber-300 hover:text-white p-2 text-lg font-bold">✕</button>
@@ -558,7 +544,7 @@
     </div>
   </div>
 
-  <!-- MODAL: Партия не одобряет (Путин / Оскорбление руководства) -->
+  <!-- MODAL: Партия не одобряет (Оскорбление руководства) -->
   <div id="partyDisapproveModal" class="fixed inset-0 bg-black/90 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden" style="display: none;">
     <div class="bg-gradient-to-b from-slate-900 via-red-950/60 to-slate-900 border-2 border-red-600 rounded-3xl max-w-md w-full p-6 shadow-[0_0_60px_rgba(220,38,38,0.6)] relative text-center">
       <button id="closeDisapproveModal" class="absolute top-4 right-4 text-red-300 hover:text-white p-2 text-lg font-bold">✕</button>
@@ -627,15 +613,7 @@
   </div>
 
   <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-    import { getAuth, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-    import { getFirestore, doc, setDoc, deleteDoc, onSnapshot, collection } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
-
-    const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
-    const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : null;
-    let app = null, db = null, auth = null, currentUser = null, userId = null;
-
-    // --- Audio Context & Sound Synthesizers (Web Audio API) ---
+    // Audio Context & Web Audio API
     let audioCtx = null;
 
     function getAudioContext() {
@@ -648,7 +626,7 @@
       return audioCtx;
     }
 
-    // 1. Moral Alarm Siren (Web Audio API)
+    // 1. Moral Alarm Siren
     function playMoralAlarmSiren() {
       try {
         const ctx = getAudioContext();
@@ -660,11 +638,9 @@
         osc1.type = 'sawtooth';
         osc2.type = 'triangle';
 
-        // Detune for urgent police/air-raid siren timbre
         osc1.detune.setValueAtTime(-10, now);
         osc2.detune.setValueAtTime(10, now);
 
-        // Modulate frequency up and down
         const cycles = 3;
         const cycleDuration = 0.35;
         for (let i = 0; i < cycles; i++) {
@@ -681,7 +657,6 @@
           osc2.frequency.exponentialRampToValueAtTime(525, tEnd);
         }
 
-        // Envelope
         gain.gain.setValueAtTime(0.001, now);
         gain.gain.linearRampToValueAtTime(0.25, now + 0.05);
         gain.gain.setValueAtTime(0.25, now + (cycles * cycleDuration) - 0.05);
@@ -700,7 +675,7 @@
       }
     }
 
-    // 2. Victory Fanfare for 777 (Web Audio API)
+    // 2. Victory Fanfare for 777
     function playWinSound() {
       try {
         const ctx = getAudioContext();
@@ -711,7 +686,7 @@
           { f: 783.99, start: 0.24, dur: 0.14 },  // G5
           { f: 1046.50, start: 0.38, dur: 0.45 }, // C6
           { f: 880.00, start: 0.85, dur: 0.15 },  // A5
-          { f: 1046.50, start: 1.00, dur: 0.75 }  // C6 (hold)
+          { f: 1046.50, start: 1.00, dur: 0.75 }  // C6
         ];
 
         notes.forEach(({ f, start, dur }) => {
@@ -735,7 +710,7 @@
       }
     }
 
-    // 3. Orthodox Church Bell Chime (Web Audio API)
+    // 3. Orthodox Church Bell Chime
     function playBellSound() {
       try {
         const ctx = getAudioContext();
@@ -776,9 +751,14 @@
       { regex: /(?:^|[^а-яёa-z0-9])(вайб[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Благорастворение воздухов" },
       { regex: /(?:^|[^а-яёa-z0-9])(кринж[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Срам душевный" },
       { regex: /(?:^|[^а-яёa-z0-9])(хайп[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Суета сует" },
-      { regex: /(?:^|[^а-яёa-z0-9])(рофл[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Смехотворство" },
+      { regex: /(?:^|[^а-яёa-z0-9])(скуф[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Муж зрелых лет" },
+      { regex: /(?:^|[^а-яёa-z0-9])(альтушк[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Девица своенравная" },
+      { regex: /(?:^|[^а-яёa-z0-9])(сигм[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Смиренный воин" },
+      { regex: /(?:^|[^а-яёa-z0-9])(тюбик[а-яё]*|чечик[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Отрок неопытный" },
+      { regex: /(?:^|[^а-яёa-z0-9])(нормис[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Благочестивый гражданин" },
+      { regex: /(?:^|[^а-яёa-z0-9])(пикми)(?=[^а-яёa-z0-9]|$)/gi, replace: "Тщеславная особа" },
       { regex: /(?:^|[^а-яёa-z0-9])(дедлайн[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Срок урочный" },
-      { regex: /(?:^|[^а-яёa-z0-9])(пруф[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Свидетельство очевидцев" }
+      { regex: /(?:^|[^а-яёa-z0-9])(тильт[а-яё]*|тильтовать)(?=[^а-яёa-z0-9]|$)/gi, replace: "Минутное уныние" }
     ];
 
     const occultRules = [
@@ -789,15 +769,12 @@
 
     const blasphemyRules = [
       { regex: /(?:^|[^а-яёa-z0-9])(бога\s+(?:не\s+существует|нет|нету|выдумали|придумали)|нет\s+бога|бог\s+(?:не\s+существует|умер|выдумка|сказка|миф)|господ[аь]\s+нет)(?=[^а-яёa-z0-9]|$)/gi, replace: "Бог есть Любовь и Творец Всего Сущего", msg: "Богоборческая фраза пресечена! Господь вездесущ!" },
-      { regex: /(?:^|[^а-яёa-z0-9])(богохул[а-яё]+)(?=[^а-яёa-z0-9]|$)/gi, replace: "Благочестие", msg: "Богохульство пресечено сиреной!" },
-      { regex: /(?:^|[^а-яёa-z0-9])(бога\s+не\s+было|бог\s+не\s+поможет)(?=[^а-яёa-z0-9]|$)/gi, replace: "Упование на милость Всевышнего", msg: "Маловерие и ропот отринуты!" }
+      { regex: /(?:^|[^а-яёa-z0-9])(богохул[а-яё]+)(?=[^а-яёa-z0-9]|$)/gi, replace: "Благочестие", msg: "Богохульство пресечено сиреной!" }
     ];
 
     const politicalRules = [
-      // Запрет упоминания Алексея Навального
       { regex: /(?:^|[^а-яёa-z0-9])(навальн[а-яё]+)(?=[^а-яёa-z0-9]|$)/gi, replace: "Запрещённый в летописи субъект", msg: "Упоминание Навального пресечено канонами летописи!" },
-      // Запрет оскорблений российских политиков и государственных деятелей (прямой и обратный порядок слов)
-      { regex: /(?:^|[^а-яёa-z0-9])((?:(?:путин[а-яё]*|владимир\s+владимирович|президент[а-яё]*|депутат[а-яё]*|министр[а-яё]*|чиновник[а-яё]*|политик[а-яё]*|власт[а-яё]*)\s+(?:лох[а-яё]*|вор[а-яё]*|жулик[а-яё]*|мраз[а-яё]*|козел[а-яё]*|козлы|урод[а-яё]*|тварь|твари|пидор[а-яё]*|педик[а-яё]*|гей[а-яё]*|черт[а-яё]*|чмо|гад[а-яё]*|дурак[а-яё]*))|(?:(?:лох[а-яё]*|вор[а-яё]*|жулик[а-яё]*|мраз[а-яё]*|урод[а-яё]*|пидор[а-яё]*|педик[а-яё]*|черт[а-яё]*|чмо|гад[а-яё]*|дурак[а-яё]*)\s+(?:путин[а-яё]*|владимир\s+владимирович|президент[а-яё]*|депутат[а-яё]*|министр[а-яё]*|чиновник[а-яё]*|политик[а-яё]*)))(?=[^а-яёa-z0-9]|$)/gi, replace: "Служение Государству Российскому", msg: "Оскорбление государственных мужей пресечено сиреной!" },
+      { regex: /(?:^|[^а-яёa-z0-9])((?:(?:путин[а-яё]*|владимир\s+владимирович|президент[а-яё]*|депутат[а-яё]*|министр[а-яё]*|чиновник[а-яё]*|политик[а-яё]*)\s+(?:лох[а-яё]*|вор[а-яё]*|жулик[а-яё]*|мраз[а-яё]*|козел[а-яё]*|козлы|урод[а-яё]*|тварь|твари|пидор[а-яё]*|педик[а-яё]*|гей[а-яё]*|черт[а-яё]*|чмо|гад[а-яё]*|дурак[а-яё]*))|(?:(?:лох[а-яё]*|вор[а-яё]*|жулик[а-яё]*|мраз[а-яё]*|урод[а-яё]*|пидор[а-яё]*|педик[а-яё]*|черт[а-яё]*|чмо|гад[а-яё]*|дурак[а-яё]*)\s+(?:путин[а-яё]*|владимир\s+владимирович|президент[а-яё]*|депутат[а-яё]*|министр[а-яё]*|чиновник[а-яё]*|политик[а-яё]*)))(?=[^а-яёa-z0-9]|$)/gi, replace: "Служение Государству Российскому", msg: "Оскорбление государственных мужей пресечено сиреной!" },
       { regex: /(?:^|[^а-яёa-z0-9])((?:свергнуть|свержение)\s+(?:власть|правительство|государство))(?=[^а-яёa-z0-9]|$)/gi, replace: "Единство Державы", msg: "Смута и призывы к беспорядкам отринуты!" }
     ];
 
@@ -820,7 +797,6 @@
     let knownLoyaltyMatches = 0;
 
     function checkPoliticalAlerts(text) {
-      // 1. Проверка оскорблений Путина и руководства -> "Партия не одобряет" + сирена
       const putinInsultRegex = /(?:^|[^а-яёa-z0-9])(?:(?:путин[а-яё]*|владимир\s+владимирович)\s+(?:лох[а-яё]*|вор[а-яё]*|жулик[а-яё]*|мраз[а-яё]*|козел[а-яё]*|козлы|урод[а-яё]*|тварь|твари|пидор[а-яё]*|педик[а-яё]*|гей[а-яё]*|черт[а-яё]*|чмо|гад[а-яё]*|дурак[а-яё]*)|(?:лох[а-яё]*|вор[а-яё]*|жулик[а-яё]*|мраз[а-яё]*|урод[а-яё]*|пидор[а-яё]*|педик[а-яё]*|черт[а-яё]*|чмо|гад[а-яё]*|дурак[а-яё]*)\s+(?:путин[а-яё]*|владимир\s+владимирович))(?=[^а-яёa-z0-9]|$)/gi;
       const putinInsultMatches = text.match(putinInsultRegex);
       const currentPutinInsultCount = putinInsultMatches ? putinInsultMatches.length : 0;
@@ -832,7 +808,6 @@
         knownPutinInsultMatches = currentPutinInsultCount;
       }
 
-      // 2. Проверка верности курсу и партии -> "Партия вас уважает"
       const loyaltyRegex = /(?:^|[^а-яёa-z0-9])(партия\s+права|партия\s+наш\s+рулевой|верность\s+партии|служу\s+россии|слава\s+россии)(?=[^а-яёa-z0-9]|$)/gi;
       const loyaltyMatches = text.match(loyaltyRegex);
       const currentLoyaltyCount = loyaltyMatches ? loyaltyMatches.length : 0;
@@ -922,7 +897,6 @@
       return list;
     }
 
-    // Check Easter Egg 777 (Only triggers on a newly typed 777)
     function checkEasterEgg777(text) {
       const matches = text.match(/(?:^|[^0-9])777(?=[^0-9]|$)/g);
       const currentCount = matches ? matches.length : 0;
@@ -958,13 +932,9 @@
       const text = inputEl.value;
       const cursorPos = inputEl.selectionStart ?? text.length;
 
-      // 777 check
       checkEasterEgg777(text);
-
-      // Проверка политических триггеров
       checkPoliticalAlerts(text);
 
-      // Determine active word under typing caret to avoid cutting half-typed innocent words
       let activeWord = null;
       let activeWordStart = -1;
       let activeWordEnd = -1;
@@ -986,7 +956,6 @@
       let preservedWord = "";
       let suffix = "";
 
-      // If active word is not a fully completed blocked word, preserve it while typing
       if (activeWord && !exactBlockedList.has(activeWord.toLowerCase().trim())) {
         prefix = text.slice(0, activeWordStart);
         preservedWord = activeWord;
@@ -1030,6 +999,10 @@
       }
     }
 
+    // Storage Management (Local Storage + Cloud)
+    const STORAGE_KEY_NOTES = 'monolith_patriot_notes_v1';
+    const STORAGE_KEY_FOLDERS = 'monolith_patriot_folders_v1';
+
     let notes = [
       {
         id: "note-1",
@@ -1042,109 +1015,38 @@
     let activeNoteId = "note-1";
     let customFolders = ["Особая папка", "Священные мысли", "Дела Державные"];
 
-    async function initStorage() {
-      if (!firebaseConfig) {
-        return;
-      }
+    function initStorage() {
       try {
-        app = initializeApp(firebaseConfig);
-        db = getFirestore(app);
-        auth = getAuth(app);
-
-        if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
-          await signInWithCustomToken(auth, __initial_auth_token);
-        } else {
-          await signInAnonymously(auth);
+        const savedNotes = localStorage.getItem(STORAGE_KEY_NOTES);
+        if (savedNotes) {
+          const parsed = JSON.parse(savedNotes);
+          if (Array.isArray(parsed) && parsed.length > 0) {
+            notes = parsed;
+            activeNoteId = notes[0].id;
+          }
         }
-
-        currentUser = auth.currentUser;
-        userId = currentUser?.uid;
-        if (!userId) return;
-
-        // Synchronize notes
-        const notesColl = collection(db, 'artifacts', appId, 'users', userId, 'notes');
-        onSnapshot(notesColl, (snapshot) => {
-          if (!snapshot.empty) {
-            const loaded = [];
-            snapshot.forEach(docSnap => {
-              const d = docSnap.data();
-              loaded.push({
-                id: docSnap.id,
-                title: d.title || 'Без заголовка',
-                folder: d.folder || 'Особая папка',
-                content: d.content || '',
-                updatedAt: d.updatedAt || Date.now()
-              });
-            });
-            loaded.sort((a, b) => (b.updatedAt || 0) - (a.updatedAt || 0));
-            notes = loaded;
-            if (!notes.find(n => n.id === activeNoteId) && notes.length > 0) {
-              activeNoteId = notes[0].id;
-            }
-            loadNote(activeNoteId);
-            renderNotesList();
-            updateStats();
-          } else {
-            saveNoteToStorage(notes[0]);
+        const savedFolders = localStorage.getItem(STORAGE_KEY_FOLDERS);
+        if (savedFolders) {
+          const parsedF = JSON.parse(savedFolders);
+          if (Array.isArray(parsedF) && parsedF.length > 0) {
+            customFolders = parsedF;
           }
-        }, (err) => {
-          console.error("Storage error (notes):", err);
-        });
-
-        // Synchronize custom folders
-        const foldersDocRef = doc(db, 'artifacts', appId, 'users', userId, 'metadata', 'folders');
-        onSnapshot(foldersDocRef, (docSnap) => {
-          if (docSnap.exists()) {
-            const data = docSnap.data();
-            if (data.folders && Array.isArray(data.folders)) {
-              customFolders = data.folders;
-              renderFolders();
-              renderNotesList();
-            }
-          }
-        }, (err) => {
-          console.error("Storage error (folders):", err);
-        });
-      } catch (err) {
-        console.error("Failed to initialize storage:", err);
+        }
+      } catch (e) {
+        console.warn('LocalStorage access note:', e);
       }
+      renderFolders();
+      loadNote(activeNoteId);
+      renderNotesList();
+      updateStats();
     }
 
-    async function saveNoteToStorage(note) {
-      if (!db || !userId || !note) return;
+    function saveAllToLocalStorage() {
       try {
-        const noteDocRef = doc(db, 'artifacts', appId, 'users', userId, 'notes', note.id);
-        await setDoc(noteDocRef, {
-          title: note.title || '',
-          folder: note.folder || 'Особая папка',
-          content: note.content || '',
-          updatedAt: note.updatedAt || Date.now()
-        }, { merge: true });
-      } catch (err) {
-        console.error("Error saving note:", err);
-      }
-    }
-
-    async function deleteNoteFromStorage(noteId) {
-      if (!db || !userId || !noteId) return;
-      try {
-        const noteDocRef = doc(db, 'artifacts', appId, 'users', userId, 'notes', noteId);
-        await deleteDoc(noteDocRef);
-      } catch (err) {
-        console.error("Error deleting note:", err);
-      }
-    }
-
-    async function saveFoldersToStorage(folders) {
-      if (!db || !userId || !folders) return;
-      try {
-        const foldersDocRef = doc(db, 'artifacts', appId, 'users', userId, 'metadata', 'folders');
-        await setDoc(foldersDocRef, {
-          folders: folders,
-          updatedAt: Date.now()
-        });
-      } catch (err) {
-        console.error("Error saving folders:", err);
+        localStorage.setItem(STORAGE_KEY_NOTES, JSON.stringify(notes));
+        localStorage.setItem(STORAGE_KEY_FOLDERS, JSON.stringify(customFolders));
+      } catch (e) {
+        console.warn('LocalStorage save error:', e);
       }
     }
 
@@ -1163,7 +1065,7 @@
     const statCensored = document.getElementById('statCensored');
 
     // Mobile View Tab Management
-    let mobileActiveView = 'editor'; // 'notes' or 'editor'
+    let mobileActiveView = 'editor';
     const sidebarPanel = document.getElementById('sidebarPanel');
     const editorContainer = document.getElementById('editorContainer');
     const tabBtnNotes = document.getElementById('tabBtnNotes');
@@ -1174,7 +1076,6 @@
     function setMobileView(view) {
       mobileActiveView = view;
       if (window.innerWidth >= 768) {
-        // Desktop: show both side by side
         if (sidebarPanel) sidebarPanel.classList.remove('hidden');
         if (editorContainer) editorContainer.classList.remove('hidden');
         return;
@@ -1184,19 +1085,19 @@
         if (sidebarPanel) sidebarPanel.classList.remove('hidden');
         if (editorContainer) editorContainer.classList.add('hidden');
         if (tabBtnNotes) {
-          tabBtnNotes.className = "py-2 px-3 rounded-lg bg-blue-600 text-white transition flex items-center justify-center gap-1.5 shadow";
+          tabBtnNotes.className = "flex-1 py-2 px-3 rounded-xl bg-blue-600 text-white font-bold text-xs flex items-center justify-center gap-1.5 shadow";
         }
         if (tabBtnEditor) {
-          tabBtnEditor.className = "py-2 px-3 rounded-lg text-slate-400 hover:text-white transition flex items-center justify-center gap-1.5";
+          tabBtnEditor.className = "flex-1 py-2 px-3 rounded-xl bg-slate-800 border border-slate-700 text-slate-300 font-bold text-xs flex items-center justify-center gap-1.5";
         }
       } else {
         if (sidebarPanel) sidebarPanel.classList.add('hidden');
         if (editorContainer) editorContainer.classList.remove('hidden');
         if (tabBtnEditor) {
-          tabBtnEditor.className = "py-2 px-3 rounded-lg bg-blue-600 text-white transition flex items-center justify-center gap-1.5 shadow";
+          tabBtnEditor.className = "flex-1 py-2 px-3 rounded-xl bg-blue-600 text-white font-bold text-xs flex items-center justify-center gap-1.5 shadow";
         }
         if (tabBtnNotes) {
-          tabBtnNotes.className = "py-2 px-3 rounded-lg text-slate-400 hover:text-white transition flex items-center justify-center gap-1.5";
+          tabBtnNotes.className = "flex-1 py-2 px-3 rounded-xl bg-slate-800 border border-slate-700 text-slate-300 font-bold text-xs flex items-center justify-center gap-1.5";
         }
       }
     }
@@ -1279,7 +1180,6 @@
         const isActive = note.id === activeNoteId;
         const item = document.createElement('div');
         
-        // Format time string
         const noteDate = note.updatedAt ? new Date(note.updatedAt) : new Date();
         const timeFormatted = noteDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
@@ -1289,7 +1189,6 @@
             : 'bg-slate-950/60 hover:bg-slate-800/60 border-slate-800/80 hover:border-slate-700 text-slate-300'
         }`;
 
-        // Tricolor left indicator for active note
         const activeIndicator = isActive 
           ? '<div class="absolute left-0 top-2 bottom-2 w-1 rounded-r bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.8)]"></div>' 
           : '';
@@ -1320,7 +1219,6 @@
         item.addEventListener('click', () => {
           saveCurrentNote();
           loadNote(note.id);
-          // On mobile, auto switch to editor when a note is picked
           if (window.innerWidth < 768) {
             setMobileView('editor');
           }
@@ -1354,7 +1252,7 @@
         active.content = noteContent.value;
         active.folder = noteFolder.value;
         active.updatedAt = Date.now();
-        saveNoteToStorage(active);
+        saveAllToLocalStorage();
       }
       const timeStr = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
       saveStatus.textContent = `Сохранено в ${timeStr}`;
@@ -1420,7 +1318,6 @@
       };
       notes.unshift(newNote);
       loadNote(newId);
-      // On mobile, switch directly to editor
       if (window.innerWidth < 768) {
         setMobileView('editor');
       }
@@ -1436,7 +1333,7 @@
       }
       const toDeleteId = activeNoteId;
       notes = notes.filter(n => n.id !== toDeleteId);
-      deleteNoteFromStorage(toDeleteId);
+      saveAllToLocalStorage();
       loadNote(notes[0].id);
       showToast("Помысел удалён из летописи", "🗑️");
     });
@@ -1447,7 +1344,7 @@
         const cleanName = name.trim();
         if (!customFolders.includes(cleanName)) {
           customFolders.push(cleanName);
-          saveFoldersToStorage(customFolders);
+          saveAllToLocalStorage();
           renderFolders();
           folderFilter.value = cleanName;
           noteFolder.value = cleanName;
@@ -1653,7 +1550,7 @@
       });
     });
 
-    // Calc button №67 (triggers canonical alert as forbidden number)
+    // Calc button №67
     document.getElementById('btnCalc67')?.addEventListener('click', () => {
       calcCurrent = '67';
       updateCalcScreen();
@@ -1673,16 +1570,12 @@
     });
 
     window.addEventListener('DOMContentLoaded', () => {
-      renderFolders();
-      loadNote('note-1');
       initStorage();
 
-      // Initialize mobile layout
       if (window.innerWidth < 768) {
         setMobileView('editor');
       }
 
-      // Ensure political modals are hidden on boot
       const disModal = document.getElementById('partyDisapproveModal');
       if (disModal) {
         disModal.classList.add('hidden');
@@ -1694,7 +1587,6 @@
         appModal.style.display = 'none';
       }
 
-      // Initialize 777 count to prevent false positives on boot
       known777Matches = (noteContent.value.match(/(?:^|[^0-9])777(?=[^0-9]|$)/g) || []).length;
     });
   </script>
