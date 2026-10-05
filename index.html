@@ -1,0 +1,1702 @@
+<!DOCTYPE html>
+<html lang="ru" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Патриотический Блокнот «Монолит» — Дозор Чистоты</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Inter, Montserrat, Share Tech Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Montserrat:wght@800;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            rf: {
+              white: '#FFFFFF',
+              blue: '#0039A6',
+              red: '#D52B1E',
+              gold: '#FFD700',
+              deepblue: '#0a192f',
+              darkcard: '#0f172a'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['"Share Tech Mono"', 'monospace'],
+            display: ['Montserrat', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Russian Tricolor Gradient Bar */
+    .tricolor-strip {
+      background: linear-gradient(90deg, #ffffff 0%, #ffffff 33.3%, #0039A6 33.3%, #0039A6 66.6%, #D52B1E 66.6%, #D52B1E 100%);
+      height: 4px;
+    }
+
+    /* Isometric 3D Logo Glow */
+    .monolith-shadow {
+      filter: drop-shadow(0 10px 18px rgba(0, 57, 166, 0.45));
+    }
+
+    /* Red Siren Flash Alarm */
+    @keyframes sirenAlert {
+      0%, 100% {
+        box-shadow: 0 0 0 0 rgba(213, 43, 30, 0);
+        border-color: rgba(213, 43, 30, 0.3);
+      }
+      50% {
+        box-shadow: 0 0 35px 8px rgba(213, 43, 30, 0.85);
+        border-color: rgba(239, 68, 68, 1);
+        background-color: rgba(153, 27, 27, 0.15);
+      }
+    }
+
+    .siren-active {
+      animation: sirenAlert 0.45s ease-in-out infinite alternate;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 7px;
+      height: 7px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #090d16;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1e293b;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #334155;
+    }
+
+    .digital-font {
+      font-family: 'Share Tech Mono', monospace;
+    }
+  </style>
+</head>
+
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col font-sans selection:bg-rf-blue selection:text-white">
+
+  <!-- Tricolor Top Border -->
+  <div class="tricolor-strip w-full sticky top-0 z-50 shadow-md"></div>
+
+  <!-- Top Header -->
+  <header class="bg-slate-900/95 backdrop-blur border-b border-slate-800 sticky top-1 z-40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between gap-3">
+      
+      <!-- Brand & Isometric Monolith Logo Replica -->
+      <div class="flex items-center gap-3">
+        <div class="w-11 h-11 sm:w-12 sm:h-12 flex-shrink-0 monolith-shadow cursor-pointer transition transform hover:scale-105" title="Калькулятор Монолит — Патриот">
+          <svg viewBox="0 0 200 200" class="w-full h-full">
+            <defs>
+              <linearGradient id="blueSideGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#1d4ed8" />
+                <stop offset="100%" stop-color="#0f2b7a" />
+              </linearGradient>
+              <linearGradient id="redBottomGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#ef4444" />
+                <stop offset="100%" stop-color="#991b1b" />
+              </linearGradient>
+              <linearGradient id="whiteArrowGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+                <stop offset="0%" stop-color="#cbd5e1" />
+                <stop offset="100%" stop-color="#ffffff" />
+              </linearGradient>
+            </defs>
+
+            <!-- White Ascending Arrow (Top Peak) -->
+            <polygon points="100,18 138,55 116,55 116,78 84,78 84,55 62,55" fill="url(#whiteArrowGrad)" stroke="#94a3b8" stroke-width="1.5"/>
+
+            <!-- Main Isometric Cube / Monolith Body -->
+            <!-- Top Face -->
+            <polygon points="100,64 158,98 100,132 42,98" fill="#1e40af" stroke="#3b82f6" stroke-width="1.5" />
+            
+            <!-- Left Face (Blue Upper) -->
+            <polygon points="42,98 100,132 100,165 42,132" fill="url(#blueSideGrad)" />
+            <!-- Left Face (Red Lower Base) -->
+            <polygon points="42,132 100,165 100,186 42,154" fill="url(#redBottomGrad)" />
+
+            <!-- Right Face (Blue Upper with Calc Matrix) -->
+            <polygon points="100,132 158,98 158,132 100,165" fill="#172554" />
+            <!-- Right Face (Red Lower Base with Key =) -->
+            <polygon points="100,165 158,132 158,154 100,186" fill="#b91c1c" />
+
+            <!-- Monolith Digital Screen on Right Face -->
+            <polygon points="104,116 154,87 154,99 104,128" fill="#090d16" stroke="#38bdf8" stroke-width="1" />
+            <text x="110" y="121" fill="#38bdf8" font-size="11" font-weight="bold" font-family="'Share Tech Mono', monospace" transform="rotate(-18 110 121)">2026/67</text>
+
+            <!-- Calculator Buttons Grid (+, -, %, =) -->
+            <polygon points="104,133 118,125 118,134 104,142" fill="#1e3a8a" />
+            <text x="108" y="139" fill="#93c5fd" font-size="9" font-weight="bold" font-family="monospace">+</text>
+
+            <polygon points="122,123 136,115 136,124 122,132" fill="#1e3a8a" />
+            <text x="127" y="129" fill="#93c5fd" font-size="9" font-weight="bold" font-family="monospace">-</text>
+
+            <polygon points="140,113 154,105 154,114 140,122" fill="#1e3a8a" />
+            <text x="144" y="119" fill="#93c5fd" font-size="8" font-weight="bold" font-family="monospace">%</text>
+
+            <!-- Big Red Equals Button -->
+            <polygon points="138,143 154,134 154,152 138,160" fill="#dc2626" stroke="#f87171" stroke-width="0.8"/>
+            <text x="142" y="153" fill="#ffffff" font-size="11" font-weight="bold" font-family="monospace">=</text>
+
+            <!-- White Rising Chevron Outline on Left -->
+            <polyline points="46,126 46,95 86,72" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/>
+          </svg>
+        </div>
+
+        <div>
+          <div class="flex items-center gap-2">
+            <h1 class="text-base sm:text-lg font-black tracking-wide text-white uppercase font-display flex items-center gap-1.5">
+              <span>МОНОЛИТ</span>
+              <span class="text-xs px-2 py-0.5 rounded-full bg-blue-900/80 border border-blue-600 text-blue-200">Блокнот</span>
+            </h1>
+            <span class="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-semibold bg-red-950 text-red-300 border border-red-800">
+              🇷🇺 Дозор Канонов
+            </span>
+          </div>
+          <p class="text-[11px] text-slate-400 hidden sm:block">Духовно-нравственные ценности • Чистота русского слова • Калькулятор</p>
+        </div>
+      </div>
+
+      <!-- Quick Action Buttons -->
+      <div class="flex items-center gap-2">
+        <!-- Psalm 67 Button -->
+        <button id="btnOpenPsalm" class="px-2.5 py-1.5 bg-amber-950/70 hover:bg-amber-900 border border-amber-600/50 hover:border-amber-400 text-amber-300 text-xs font-semibold rounded-lg transition flex items-center gap-1.5 shadow-sm">
+          <span>📜</span>
+          <span class="hidden md:inline">Псалом</span> <span>67</span>
+        </button>
+
+        <!-- Prayers Ideas Button -->
+        <button id="btnOpenPrayers" class="px-2.5 py-1.5 bg-blue-950/80 hover:bg-blue-900 border border-blue-700/60 hover:border-blue-400 text-blue-200 text-xs font-semibold rounded-lg transition flex items-center gap-1.5 shadow-sm">
+          <span>🙏</span>
+          <span class="hidden sm:inline">Помолиться</span>
+        </button>
+
+        <!-- Calculator Modal Button -->
+        <button id="btnOpenCalc" class="px-2.5 py-1.5 bg-slate-800 hover:bg-slate-700 border border-slate-600 text-slate-200 text-xs font-semibold rounded-lg transition flex items-center gap-1.5">
+          <span>🧮</span>
+          <span class="hidden sm:inline">Калькулятор</span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Main Grid Container: Left Sidebar (History & Notes) | Right Editor Workspace -->
+  <main class="flex-1 max-w-7xl w-full mx-auto px-3 sm:px-6 py-4 flex flex-col md:flex-row gap-4 items-stretch">
+    
+    <!-- LEFT SIDEBAR: History of Saved Notes & Folders (Fixed width on desktop) -->
+    <aside class="w-full md:w-80 lg:w-96 flex-shrink-0 flex flex-col gap-3">
+      
+      <!-- Top Action: New Note Button -->
+      <button id="btnCreateNote" class="w-full py-2.5 px-4 bg-gradient-to-r from-blue-700 via-blue-600 to-indigo-700 hover:from-blue-600 hover:to-indigo-600 text-white font-black text-xs uppercase tracking-wider rounded-2xl shadow-lg border border-blue-400/40 transition transform active:scale-95 flex items-center justify-center gap-2">
+        <span class="text-base leading-none">+</span>
+        <span>Записать новый помысел</span>
+      </button>
+
+      <!-- Folders & Search Panel -->
+      <div class="bg-slate-900/90 border border-slate-800 rounded-2xl p-3.5 shadow-lg backdrop-blur space-y-2.5">
+        <div class="flex items-center justify-between">
+          <span class="text-[11px] font-bold text-slate-300 uppercase tracking-wider flex items-center gap-1.5">
+            <span>📁 Папка</span>
+          </span>
+          <button id="btnNewFolder" class="text-[11px] text-blue-400 hover:text-blue-300 font-semibold transition">
+            + Создать
+          </button>
+        </div>
+
+        <!-- Folder Select Dropdown -->
+        <select id="folderFilter" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-2.5 py-2 text-xs text-slate-200 focus:outline-none focus:border-blue-500 transition">
+          <option value="all">📂 Все папки (Показать всё)</option>
+          <option value="Особая папка" selected>📁 Особая папка (Основная)</option>
+          <option value="Священные мысли">📁 Священные мысли</option>
+          <option value="Дела Державные">📁 Дела Державные</option>
+        </select>
+
+        <!-- Search Bar -->
+        <div class="relative">
+          <input 
+            type="text" 
+            id="searchNotes" 
+            placeholder="Поиск по истории заметок..." 
+            class="w-full bg-slate-950/80 border border-slate-700/80 rounded-xl pl-8 pr-3 py-1.5 text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-blue-500 transition"
+          />
+          <span class="absolute left-2.5 top-2 text-xs text-slate-500">🔍</span>
+        </div>
+      </div>
+
+      <!-- Notes History Chronicle List -->
+      <div class="bg-slate-900/90 border border-slate-800 rounded-2xl p-3.5 shadow-lg flex-1 flex flex-col min-h-[300px] md:min-h-[440px]">
+        <div class="flex items-center justify-between pb-2 mb-2 border-b border-slate-800">
+          <div class="flex items-center gap-1.5">
+            <span class="text-sm">📜</span>
+            <span class="text-xs font-bold uppercase tracking-wider text-slate-300">История заметок</span>
+          </div>
+          <span class="text-[11px] font-semibold text-blue-400 font-mono" id="notesCountLabel">1 помысел</span>
+        </div>
+
+        <!-- Scrollable History List -->
+        <div id="notesList" class="flex-1 overflow-y-auto space-y-2 pr-1 max-h-[420px] md:max-h-[520px]">
+          <!-- Notes cards dynamically injected here -->
+        </div>
+      </div>
+
+      <!-- Moral Shield Watchdog Status Box (Sidebar Footer) -->
+      <div id="moralShieldBox" class="bg-gradient-to-b from-slate-900 to-slate-950 border border-slate-800 rounded-2xl p-3.5 shadow-md transition-all duration-300">
+        <div class="flex items-center justify-between mb-1.5">
+          <div class="flex items-center gap-1.5">
+            <span class="text-sm">🛡️</span>
+            <span class="text-[11px] font-bold uppercase tracking-wider text-slate-300">Дозор Чистоты Речи</span>
+          </div>
+          <button id="btnTestSiren" class="px-2 py-0.5 text-[10px] bg-red-950/80 hover:bg-red-900 text-red-200 border border-red-700 rounded-lg transition" title="Проверить звук сирены">
+            🚨 Сирена
+          </button>
+        </div>
+
+        <p class="text-[10px] text-slate-400 mb-2 leading-tight">
+          Пресекает сквернословие и числа <span class="text-red-400 font-mono">67, 52, 1488, 104, 666</span>.
+        </p>
+
+        <!-- Canons Switches -->
+        <div class="grid grid-cols-2 gap-1 text-[10px] text-slate-300">
+          <label class="flex items-center gap-1.5 cursor-pointer hover:text-white">
+            <input type="checkbox" id="shieldMat" checked class="rounded border-slate-700 text-red-600 focus:ring-0">
+            <span>Без брани</span>
+          </label>
+          <label class="flex items-center gap-1.5 cursor-pointer hover:text-white">
+            <input type="checkbox" id="shieldSlang" checked class="rounded border-slate-700 text-blue-600 focus:ring-0">
+            <span>Без сленга</span>
+          </label>
+          <label class="flex items-center gap-1.5 cursor-pointer hover:text-white">
+            <input type="checkbox" id="shieldOccult" checked class="rounded border-slate-700 text-amber-500 focus:ring-0">
+            <span>Без гаданий</span>
+          </label>
+          <label class="flex items-center gap-1.5 cursor-pointer hover:text-white">
+            <input type="checkbox" id="shieldGod" checked class="rounded border-slate-700 text-amber-400 focus:ring-0">
+            <span>Благоговение</span>
+          </label>
+        </div>
+      </div>
+
+    </aside>
+
+    <!-- RIGHT WORKSPACE: Active Note Editor (Takes remaining width and height) -->
+    <section class="flex-1 flex flex-col gap-3 min-w-0">
+      
+      <!-- Editor Card -->
+      <div id="editorContainer" class="bg-slate-900/90 border border-slate-800 rounded-2xl p-4 sm:p-5 shadow-xl flex-1 flex flex-col relative transition-all duration-300 min-h-[500px]">
+        
+        <!-- Editor Header (Title, Folder Selector, Actions) -->
+        <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 pb-3 border-b border-slate-800">
+          <div class="flex-1 min-w-0">
+            <input 
+              type="text" 
+              id="noteTitle" 
+              placeholder="Заголовок помысла..." 
+              class="w-full bg-transparent text-lg sm:text-xl font-bold text-white placeholder-slate-500 focus:outline-none transition truncate"
+              autocomplete="off"
+            />
+          </div>
+
+          <!-- Folder Picker for Current Note & Action Buttons -->
+          <div class="flex items-center gap-2 flex-shrink-0">
+            <select id="noteFolder" class="bg-slate-950 border border-slate-700 rounded-xl px-2.5 py-1.5 text-xs text-slate-300 focus:outline-none focus:border-blue-500 transition">
+              <option value="Особая папка">📁 Особая папка</option>
+              <option value="Священные мысли">📁 Священные мысли</option>
+              <option value="Дела Державные">📁 Дела Державные</option>
+            </select>
+
+            <button id="btnSaveNote" class="px-3.5 py-1.5 bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold rounded-xl transition shadow flex items-center gap-1.5">
+              <span>💾</span> <span>Сохранить</span>
+            </button>
+
+            <button id="btnDeleteNote" class="p-1.5 text-slate-400 hover:text-red-400 border border-slate-700 hover:border-red-500/50 rounded-xl transition" title="Удалить помысел из истории">
+              🗑️
+            </button>
+          </div>
+        </div>
+
+        <!-- Moral Alert Banner (Shown during alarm) -->
+        <div id="censorAlertBanner" class="hidden my-2.5 p-2.5 bg-red-950/80 border border-red-600 rounded-xl text-xs text-red-200 flex items-center justify-between transition-all">
+          <div class="flex items-center gap-2">
+            <span class="text-base animate-pulse">🚨</span>
+            <span id="censorAlertText" class="font-medium">Запрещённое слово или число пресечено сиреной!</span>
+          </div>
+          <button id="closeCensorAlert" class="text-red-300 hover:text-white px-2 py-0.5 rounded">✕</button>
+        </div>
+
+        <!-- Main Content Textarea -->
+        <div class="flex-1 py-3 flex flex-col">
+          <textarea 
+            id="noteContent" 
+            placeholder="Пишите мысли праведные, созидательные и чистые... Выберите помысел в истории слева или пишите здесь!" 
+            class="w-full flex-1 min-h-[380px] bg-slate-950/40 border border-slate-800/80 rounded-xl p-4 text-sm sm:text-base text-slate-100 placeholder-slate-600 leading-relaxed focus:outline-none focus:border-blue-500/70 transition resize-none font-sans"
+            spellcheck="false"
+          ></textarea>
+        </div>
+
+        <!-- Editor Bottom Bar & Telemetry -->
+        <div class="pt-3 border-t border-slate-800/80 flex flex-wrap items-center justify-between gap-3 text-xs text-slate-400">
+          
+          <div class="flex items-center gap-4">
+            <span>Символов: <b id="statChars" class="text-slate-200">0</b></span>
+            <span>Слов: <b id="statWords" class="text-slate-200">0</b></span>
+            <span class="text-amber-400 hidden" id="stat67Badge">Священных 67: <b id="stat67Count" class="font-mono">0</b></span>
+            <span>Очищено слов: <b id="statCensored" class="text-blue-400">0</b></span>
+          </div>
+
+          <div class="flex items-center gap-2">
+            <span id="saveStatus" class="text-[11px] text-slate-500">Все помыслы сохранены</span>
+            <button id="btnInsert67" class="px-2 py-1 bg-amber-950/60 hover:bg-amber-900/80 text-amber-300 border border-amber-600/40 rounded-lg text-xs transition" title="Вставить цитату из Псалма 67">
+              + Цитата 67
+            </button>
+            <button id="btnCopyText" class="px-2 py-1 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-lg text-xs transition">
+              📋 Скопировать
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Traditional Values Footer Banner (Decree 809) -->
+      <div class="bg-gradient-to-r from-blue-950/40 via-slate-900 to-red-950/40 border border-slate-800/80 rounded-2xl p-3 flex items-center justify-between gap-3">
+        <div class="flex items-center gap-2.5">
+          <span class="text-lg">🕊️</span>
+          <div>
+            <div class="text-xs font-bold text-slate-200">Традиционные Духовно-Нравственные Ценности</div>
+            <div class="text-[11px] text-slate-400">Служение Отечеству, созидательный труд, семья и чистота совести.</div>
+          </div>
+        </div>
+        <div class="tricolor-strip w-14 h-1.5 rounded-full hidden sm:block"></div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- MODAL: Идеи помолиться Богу -->
+  <div id="prayersModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden" style="display: none;">
+    <div class="bg-slate-900 border border-blue-500/40 rounded-3xl max-w-xl w-full p-6 shadow-2xl relative max-h-[90vh] flex flex-col">
+      <div class="flex items-center justify-between pb-3 border-b border-slate-800">
+        <div class="flex items-center gap-2">
+          <span class="text-2xl">🙏</span>
+          <div>
+            <h3 class="text-base font-bold text-white">Идеи помолиться Богу</h3>
+            <p class="text-xs text-blue-300">Канонические молитвы для благого настроя души</p>
+          </div>
+        </div>
+        <button id="closePrayersModal" class="text-slate-400 hover:text-white p-1 text-lg">✕</button>
+      </div>
+
+      <div class="flex-1 overflow-y-auto py-4 space-y-4 pr-1 text-xs sm:text-sm text-slate-200 leading-relaxed">
+        <!-- Prayer 1 -->
+        <div class="p-3.5 rounded-2xl bg-slate-950/80 border border-slate-800 hover:border-blue-600/50 transition">
+          <div class="flex items-center justify-between mb-1.5">
+            <span class="font-bold text-amber-300">Молитва Оптинских старцев на начало дня</span>
+            <button class="btnInsertPrayer text-[11px] text-blue-400 hover:text-blue-300 bg-blue-950 px-2 py-0.5 rounded border border-blue-800" data-prayer="1">Вставить в блокнот</button>
+          </div>
+          <p class="text-slate-300 italic" id="prayerText1">
+            «Господи, дай мне с душевным спокойствием встретить всё, что принесёт мне наступающий день. Дай мне всецело предаться воле Твоей святой. На всякий час сего дня во всём наставь и поддержи меня...»
+          </p>
+        </div>
+
+        <!-- Prayer 2 -->
+        <div class="p-3.5 rounded-2xl bg-slate-950/80 border border-slate-800 hover:border-blue-600/50 transition">
+          <div class="flex items-center justify-between mb-1.5">
+            <span class="font-bold text-amber-300">Молитва о защите Отечества и народа</span>
+            <button class="btnInsertPrayer text-[11px] text-blue-400 hover:text-blue-300 bg-blue-950 px-2 py-0.5 rounded border border-blue-800" data-prayer="2">Вставить в блокнот</button>
+          </div>
+          <p class="text-slate-300 italic" id="prayerText2">
+            «Господи Боже сил, Боже спасения нашего! Призри в милости на державу нашу Российскую, сохрани народ наш в единомыслии, правде и мире, огради от всякого зла и укрепи дух созидания...»
+          </p>
+        </div>
+
+        <!-- Prayer 3 -->
+        <div class="p-3.5 rounded-2xl bg-slate-950/80 border border-slate-800 hover:border-blue-600/50 transition">
+          <div class="flex items-center justify-between mb-1.5">
+            <span class="font-bold text-amber-300">Благословение перед началом всякого труда</span>
+            <button class="btnInsertPrayer text-[11px] text-blue-400 hover:text-blue-300 bg-blue-950 px-2 py-0.5 rounded border border-blue-800" data-prayer="3">Вставить в блокнот</button>
+          </div>
+          <p class="text-slate-300 italic" id="prayerText3">
+            «Господи Иисусе Христе, Сыне Единородный Безначальнаго Твоего Отца! Ты бо рекл еси: без Мене не можете творити ничесоже. Помози мне, грешному, сие дело, мною начинаемое, о Тебе Самом совершити...»
+          </p>
+        </div>
+      </div>
+
+      <div class="pt-3 border-t border-slate-800 flex justify-between items-center">
+        <button id="btnPlayBell" class="px-3 py-1.5 bg-amber-950 text-amber-300 border border-amber-700/60 rounded-xl text-xs hover:bg-amber-900 transition flex items-center gap-1.5">
+          <span>🔔</span> <span>Ударить в колокол (Благовест)</span>
+        </button>
+        <button id="btnClosePrayersBottom" class="px-4 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-xl text-xs transition">
+          Закрыть
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: Псалом 67 -->
+  <div id="psalmModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden" style="display: none;">
+    <div class="bg-slate-900 border border-amber-500/50 rounded-3xl max-w-lg w-full p-6 shadow-2xl relative flex flex-col">
+      <div class="flex items-center justify-between pb-3 border-b border-slate-800">
+        <div class="flex items-center gap-2">
+          <span class="text-2xl">📜</span>
+          <h3 class="text-base font-bold text-amber-300">Священный Псалом 67</h3>
+        </div>
+        <button id="closePsalmModal" class="text-slate-400 hover:text-white p-1 text-lg">✕</button>
+      </div>
+
+      <div class="py-4 text-xs sm:text-sm text-slate-200 leading-relaxed max-h-[60vh] overflow-y-auto">
+        <div class="p-3 bg-amber-950/20 border border-amber-800/40 rounded-xl mb-3">
+          <p class="font-serif italic text-amber-200 text-sm">
+            «Да воскреснет Бог, и расточатся врази Его, и да бежат от лица Его ненавидящии Его. Яко исчезает дым, да исчезнут; яко тает воск от лица огня, тако да погибнут грешницы от лица Божия, а праведницы да возвеселятся...»
+          </p>
+        </div>
+        <p class="text-slate-400 text-xs">
+          Псалом 67 царя Давида читается о победе праведности над тьмой, об укреплении духа и ограждении Отечества от всякой вражды.
+        </p>
+      </div>
+
+      <div class="pt-3 border-t border-slate-800 flex justify-end gap-2">
+        <button id="btnInsertPsalmToNote" class="px-3 py-1.5 bg-amber-600 hover:bg-amber-500 text-slate-950 font-bold rounded-xl text-xs transition">
+          Вставить в заметку
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: Интерактивный Калькулятор «Монолит» -->
+  <div id="calcModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden" style="display: none;">
+    <div class="bg-slate-900 border-2 border-blue-600 rounded-3xl max-w-xs w-full p-5 shadow-2xl relative">
+      <div class="flex items-center justify-between pb-2 mb-3 border-b border-slate-800">
+        <div class="flex items-center gap-2">
+          <span class="text-lg">🧮</span>
+          <span class="text-xs font-bold text-white uppercase tracking-wider">Калькулятор Монолит</span>
+        </div>
+        <button id="closeCalcModal" class="text-slate-400 hover:text-white text-lg">✕</button>
+      </div>
+
+      <!-- Display -->
+      <div class="bg-slate-950 border border-slate-800 rounded-xl p-3 mb-3 text-right">
+        <div id="calcExpression" class="text-[11px] text-slate-500 font-mono h-4 overflow-hidden truncate"></div>
+        <div id="calcDisplay" class="text-2xl font-bold text-blue-400 digital-font truncate">0</div>
+      </div>
+
+      <!-- Keypad -->
+      <div class="grid grid-cols-4 gap-1.5 text-xs font-bold">
+        <button class="calc-btn p-2.5 bg-slate-800 hover:bg-slate-700 text-red-400 rounded-lg" data-action="clear">C</button>
+        <button class="calc-btn p-2.5 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-lg" data-action="back">⌫</button>
+        <button class="calc-btn p-2.5 bg-slate-800 hover:bg-slate-700 text-blue-300 rounded-lg" data-action="percent">%</button>
+        <button class="calc-btn p-2.5 bg-blue-900 hover:bg-blue-800 text-blue-200 rounded-lg" data-val="/">÷</button>
+
+        <button class="calc-btn p-2.5 bg-slate-800 hover:bg-slate-700 text-slate-100 rounded-lg" data-val="7">7</button>
+        <button class="calc-btn p-2.5 bg-slate-800 hover:bg-slate-700 text-slate-100 rounded-lg" data-val="8">8</button>
+        <button class="calc-btn p-2.5 bg-slate-800 hover:bg-slate-700 text-slate-100 rounded-lg" data-val="9">9</button>
+        <button class="calc-btn p-2.5 bg-blue-900 hover:bg-blue-800 text-blue-200 rounded-lg" data-val="*">×</button>
+
+        <button class="calc-btn p-2.5 bg-slate-800 hover:bg-slate-700 text-slate-100 rounded-lg" data-val="4">4</button>
+        <button class="calc-btn p-2.5 bg-slate-800 hover:bg-slate-700 text-slate-100 rounded-lg" data-val="5">5</button>
+        <button class="calc-btn p-2.5 bg-slate-800 hover:bg-slate-700 text-slate-100 rounded-lg" data-val="6">6</button>
+        <button class="calc-btn p-2.5 bg-blue-900 hover:bg-blue-800 text-blue-200 rounded-lg" data-val="-">−</button>
+
+        <button class="calc-btn p-2.5 bg-slate-800 hover:bg-slate-700 text-slate-100 rounded-lg" data-val="1">1</button>
+        <button class="calc-btn p-2.5 bg-slate-800 hover:bg-slate-700 text-slate-100 rounded-lg" data-val="2">2</button>
+        <button class="calc-btn p-2.5 bg-slate-800 hover:bg-slate-700 text-slate-100 rounded-lg" data-val="3">3</button>
+        <button class="calc-btn p-2.5 bg-blue-900 hover:bg-blue-800 text-blue-200 rounded-lg" data-val="+">+</button>
+
+        <button class="calc-btn p-2.5 bg-slate-800 hover:bg-slate-700 text-slate-100 rounded-lg" data-val="0">0</button>
+        <button class="calc-btn p-2.5 bg-slate-800 hover:bg-slate-700 text-slate-100 rounded-lg" data-val=".">.</button>
+        <button class="calc-btn p-2.5 bg-amber-950 hover:bg-amber-900 text-amber-300 rounded-lg border border-amber-600/40" id="btnCalc67">№67</button>
+        <button class="calc-btn p-2.5 bg-red-600 hover:bg-red-500 text-white rounded-lg shadow" data-action="calculate">=</button>
+      </div>
+
+      <button id="btnInsertCalcResult" class="mt-3 w-full py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs rounded-xl transition">
+        Перенести результат в блокнот
+      </button>
+    </div>
+  </div>
+
+  <!-- MODAL: Награда за Число 777 (HIDDEN BY DEFAULT - Opens ONLY on typing 777) -->
+  <div id="prize777Modal" class="fixed inset-0 bg-black/85 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden" style="display: none;">
+    <div class="bg-gradient-to-b from-slate-900 via-amber-950/40 to-slate-900 border-2 border-amber-400 rounded-3xl max-w-md w-full p-6 shadow-[0_0_60px_rgba(245,158,11,0.4)] relative text-center">
+      <button id="closePrizeModal" class="absolute top-4 right-4 text-amber-300 hover:text-white p-2 text-lg font-bold">✕</button>
+      
+      <div class="inline-flex items-center justify-center w-14 h-14 rounded-full bg-amber-500/20 border border-amber-400 mb-3 shadow-lg">
+        <span class="text-3xl">🏆</span>
+      </div>
+
+      <div class="digital-font text-[11px] tracking-widest text-amber-400 uppercase font-bold mb-1">Священная Победа • Код 777</div>
+      <h3 class="text-xl font-black text-amber-200 mb-2 font-serif">Партия гордится тобой!</h3>
+      
+      <p class="text-xs sm:text-sm text-slate-200 font-medium leading-relaxed mb-4">
+        Партия гордится тобой, ты выиграл святой приз от Александра невского, забери прямо сейчас
+      </p>
+
+      <div class="bg-slate-950 p-2.5 rounded-2xl border border-amber-500/30 mb-4">
+        <img 
+          src="https://avatars.mds.yandex.net/get-mpic/20856157/pice3218653c7f8d5b809aafc72f26f02df/orig" 
+          alt="Святой приз от Александра Невского" 
+          class="max-h-56 mx-auto rounded-xl shadow-xl object-contain border border-amber-500/30"
+          onerror="this.src='https://placehold.co/400x300/1e293b/f59e0b?text=Святой+Приз+Александра+Невского'"
+        />
+      </div>
+
+      <button id="btnClaimPrize" class="w-full py-2.5 bg-gradient-to-r from-amber-500 via-amber-400 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-black text-xs uppercase tracking-wider rounded-xl shadow-lg transition">
+        Забрать Святой Приз
+      </button>
+    </div>
+  </div>
+
+  <!-- MODAL: Партия не одобряет (Путин / Оскорбление руководства) -->
+  <div id="partyDisapproveModal" class="fixed inset-0 bg-black/90 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden" style="display: none;">
+    <div class="bg-gradient-to-b from-slate-900 via-red-950/60 to-slate-900 border-2 border-red-600 rounded-3xl max-w-md w-full p-6 shadow-[0_0_60px_rgba(220,38,38,0.6)] relative text-center">
+      <button id="closeDisapproveModal" class="absolute top-4 right-4 text-red-300 hover:text-white p-2 text-lg font-bold">✕</button>
+      
+      <div class="inline-flex items-center justify-center w-14 h-14 rounded-full bg-red-600/20 border border-red-500 mb-3 shadow-lg">
+        <span class="text-3xl animate-bounce">🚨</span>
+      </div>
+
+      <div class="digital-font text-[11px] tracking-widest text-red-400 uppercase font-bold mb-1">Государственный Контроль • Тревога</div>
+      <h3 class="text-xl font-black text-red-300 mb-2 font-serif">Партия не одобряет!</h3>
+      
+      <p class="text-xs sm:text-sm text-slate-200 font-medium leading-relaxed mb-4">
+        Зафиксировано оскорбление руководства государства. Блокнот переведён в режим повышенной бдительности!
+      </p>
+
+      <div class="bg-slate-950 p-2.5 rounded-2xl border border-red-600/40 mb-4">
+        <img 
+          src="https://cdnn21.img.ria.ru/images/156054/65/1560546572_376:0:4017:2048_650x0_80_0_0_6da0ba56669ef30e7032255dd1931f08.jpg" 
+          alt="Партия не одобряет" 
+          class="max-h-56 mx-auto rounded-xl shadow-xl object-contain border border-red-700/50"
+          onerror="this.src='https://placehold.co/400x300/450a0a/f87171?text=Партия+Не+Одобряет'"
+        />
+      </div>
+
+      <button id="btnAcknowledgeDisapprove" class="w-full py-2.5 bg-gradient-to-r from-red-700 via-red-600 to-red-800 hover:from-red-600 hover:to-red-700 text-white font-black text-xs uppercase tracking-wider rounded-xl shadow-lg transition">
+        Осознать и исправиться
+      </button>
+    </div>
+  </div>
+
+  <!-- MODAL: Партия вас уважает (Патриотические помыслы) -->
+  <div id="partyApproveModal" class="fixed inset-0 bg-black/90 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden" style="display: none;">
+    <div class="bg-gradient-to-b from-slate-900 via-blue-950/60 to-slate-900 border-2 border-blue-500 rounded-3xl max-w-md w-full p-6 shadow-[0_0_60px_rgba(59,130,246,0.5)] relative text-center">
+      <button id="closeApproveModal" class="absolute top-4 right-4 text-blue-300 hover:text-white p-2 text-lg font-bold">✕</button>
+      
+      <div class="inline-flex items-center justify-center w-14 h-14 rounded-full bg-blue-600/20 border border-blue-400 mb-3 shadow-lg">
+        <span class="text-3xl">⭐</span>
+      </div>
+
+      <div class="digital-font text-[11px] tracking-widest text-blue-400 uppercase font-bold mb-1">Высокое Доверие • Патриотизм</div>
+      <h3 class="text-xl font-black text-blue-200 mb-2 font-serif">Партия вас уважает!</h3>
+      
+      <p class="text-xs sm:text-sm text-slate-200 font-medium leading-relaxed mb-4">
+        Верность государственному курсу и традиционным идеалам отмечена высшим знаком одобрения.
+      </p>
+
+      <div class="bg-slate-950 p-2.5 rounded-2xl border border-blue-500/30 mb-4">
+        <img 
+          src="https://i.pinimg.com/originals/23/e4/57/23e45791f4e3aef25c3f3fa9208f36b6.jpg?nii=t" 
+          alt="Партия вас уважает" 
+          class="max-h-56 mx-auto rounded-xl shadow-xl object-contain border border-blue-500/40"
+          onerror="this.src='https://placehold.co/400x300/172554/60a5fa?text=Партия+Вас+Уважает'"
+        />
+      </div>
+
+      <button id="btnAcceptApprove" class="w-full py-2.5 bg-gradient-to-r from-blue-600 via-blue-500 to-blue-700 hover:from-blue-500 hover:to-blue-600 text-white font-black text-xs uppercase tracking-wider rounded-xl shadow-lg transition">
+        Служу Отечеству!
+      </button>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-24 opacity-0 transition-all duration-300 bg-slate-900 border border-blue-500 text-slate-100 text-xs px-4 py-2.5 rounded-xl shadow-xl flex items-center gap-2 pointer-events-none">
+    <span id="toastIcon">✨</span>
+    <span id="toastMsg">Уведомление</span>
+  </div>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+    import { getAuth, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+    import { getFirestore, doc, setDoc, deleteDoc, onSnapshot, collection } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+    const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+    const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : null;
+    let app = null, db = null, auth = null, currentUser = null, userId = null;
+
+    // --- Audio Context & Sound Synthesizers (Web Audio API) ---
+    let audioCtx = null;
+
+    function getAudioContext() {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+      if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+      return audioCtx;
+    }
+
+    // 1. Moral Alarm Siren (Web Audio API)
+    function playMoralAlarmSiren() {
+      try {
+        const ctx = getAudioContext();
+        const now = ctx.currentTime;
+        const osc1 = ctx.createOscillator();
+        const osc2 = ctx.createOscillator();
+        const gain = ctx.createGain();
+
+        osc1.type = 'sawtooth';
+        osc2.type = 'triangle';
+
+        // Detune for urgent police/air-raid siren timbre
+        osc1.detune.setValueAtTime(-10, now);
+        osc2.detune.setValueAtTime(10, now);
+
+        // Modulate frequency up and down
+        const cycles = 3;
+        const cycleDuration = 0.35;
+        for (let i = 0; i < cycles; i++) {
+          const tStart = now + i * cycleDuration;
+          const tMid = tStart + cycleDuration / 2;
+          const tEnd = tStart + cycleDuration;
+
+          osc1.frequency.setValueAtTime(520, tStart);
+          osc1.frequency.exponentialRampToValueAtTime(920, tMid);
+          osc1.frequency.exponentialRampToValueAtTime(520, tEnd);
+
+          osc2.frequency.setValueAtTime(525, tStart);
+          osc2.frequency.exponentialRampToValueAtTime(925, tMid);
+          osc2.frequency.exponentialRampToValueAtTime(525, tEnd);
+        }
+
+        // Envelope
+        gain.gain.setValueAtTime(0.001, now);
+        gain.gain.linearRampToValueAtTime(0.25, now + 0.05);
+        gain.gain.setValueAtTime(0.25, now + (cycles * cycleDuration) - 0.05);
+        gain.gain.linearRampToValueAtTime(0.0001, now + (cycles * cycleDuration));
+
+        osc1.connect(gain);
+        osc2.connect(gain);
+        gain.connect(ctx.destination);
+
+        osc1.start(now);
+        osc2.start(now);
+        osc1.stop(now + (cycles * cycleDuration));
+        osc2.stop(now + (cycles * cycleDuration));
+      } catch (e) {
+        console.debug('Siren audio error:', e);
+      }
+    }
+
+    // 2. Victory Fanfare for 777 (Web Audio API)
+    function playWinSound() {
+      try {
+        const ctx = getAudioContext();
+        const now = ctx.currentTime;
+        const notes = [
+          { f: 523.25, start: 0, dur: 0.12 },     // C5
+          { f: 659.25, start: 0.12, dur: 0.12 },  // E5
+          { f: 783.99, start: 0.24, dur: 0.14 },  // G5
+          { f: 1046.50, start: 0.38, dur: 0.45 }, // C6
+          { f: 880.00, start: 0.85, dur: 0.15 },  // A5
+          { f: 1046.50, start: 1.00, dur: 0.75 }  // C6 (hold)
+        ];
+
+        notes.forEach(({ f, start, dur }) => {
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+          osc.type = 'triangle';
+          osc.frequency.setValueAtTime(f, now + start);
+
+          gain.gain.setValueAtTime(0.001, now + start);
+          gain.gain.linearRampToValueAtTime(0.3, now + start + 0.02);
+          gain.gain.exponentialRampToValueAtTime(0.0001, now + start + dur);
+
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+
+          osc.start(now + start);
+          osc.stop(now + start + dur + 0.05);
+        });
+      } catch (e) {
+        console.debug('Win sound error:', e);
+      }
+    }
+
+    // 3. Orthodox Church Bell Chime (Web Audio API)
+    function playBellSound() {
+      try {
+        const ctx = getAudioContext();
+        const now = ctx.currentTime;
+        const bellFreqs = [440, 880, 1320, 1760];
+        bellFreqs.forEach((freq, idx) => {
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(freq * (1 + idx * 0.02), now);
+
+          gain.gain.setValueAtTime(0.18 / (idx + 1), now);
+          gain.gain.exponentialRampToValueAtTime(0.0001, now + 2.5);
+
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+          osc.start(now);
+          osc.stop(now + 2.5);
+        });
+      } catch (e) {
+        console.debug('Bell audio error:', e);
+      }
+    }
+
+    const matRules = [
+      { regex: /(?:^|[^а-яёa-z0-9])(ху[йиеяюё][а-яё]*|поху[йиеяюё][а-яё]*|наху[йиеяюё][а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Благодать Божия" },
+      { regex: /(?:^|[^а-яёa-z0-9])(пизд[а-яё]+)(?=[^а-яёa-z0-9]|$)/gi, replace: "Святая Тишина" },
+      { regex: /(?:^|[^а-яёa-z0-9])(еб[а-яё]+|ёб[а-яё]+|выеб[а-яё]+|доеб[а-яё]+|заеб[а-яё]+|отъеб[а-яё]+)(?=[^а-яёa-z0-9]|$)/gi, replace: "Праведное Деяние" },
+      { regex: /(?:^|[^а-яёa-z0-9])(бл[яе]д[а-яё]*|бля)(?=[^а-яёa-z0-9]|$)/gi, replace: "Спаси Господи" },
+      { regex: /(?:^|[^а-яёa-z0-9])(сук[а-яё]+)(?=[^а-яёa-z0-9]|$)/gi, replace: "Мир В Душе" },
+      { regex: /(?:^|[^а-яёa-z0-9])(пидор[а-яё]*|пидар[а-яё]*|педик[а-яё]*|педрил[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Заблудший Человек" },
+      { regex: /(?:^|[^а-яёa-z0-9])(мудак[а-яё]*|мудил[а-яё]*|гондон[а-яё]*|гандон[а-яё]*|мраз[а-яё]+|уеб[а-яё]+)(?=[^а-яёa-z0-9]|$)/gi, replace: "Незрелый Умом" },
+      { regex: /(?:^|[^а-яёa-z0-9])(лох[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Смиренный гражданин" },
+      { regex: /(?:^|[^а-яёa-z0-9])(гей[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Заблудшая душа" }
+    ];
+
+    const slangRules = [
+      { regex: /(?:^|[^а-яёa-z0-9])(вайб[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Благорастворение воздухов" },
+      { regex: /(?:^|[^а-яёa-z0-9])(кринж[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Срам душевный" },
+      { regex: /(?:^|[^а-яёa-z0-9])(хайп[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Суета сует" },
+      { regex: /(?:^|[^а-яёa-z0-9])(рофл[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Смехотворство" },
+      { regex: /(?:^|[^а-яёa-z0-9])(дедлайн[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Срок урочный" },
+      { regex: /(?:^|[^а-яёa-z0-9])(пруф[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Свидетельство очевидцев" }
+    ];
+
+    const occultRules = [
+      { regex: /(?:^|[^а-яёa-z0-9])(гороскоп[а-яё]*|астролог[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Промысел Всевышнего" },
+      { regex: /(?:^|[^а-яёa-z0-9])(таро|таролог[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Пустое гадание" },
+      { regex: /(?:^|[^а-яёa-z0-9])(порч[а-яё]+|сглаз[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Маловерие" }
+    ];
+
+    const blasphemyRules = [
+      { regex: /(?:^|[^а-яёa-z0-9])(бога\s+(?:не\s+существует|нет|нету|выдумали|придумали)|нет\s+бога|бог\s+(?:не\s+существует|умер|выдумка|сказка|миф)|господ[аь]\s+нет)(?=[^а-яёa-z0-9]|$)/gi, replace: "Бог есть Любовь и Творец Всего Сущего", msg: "Богоборческая фраза пресечена! Господь вездесущ!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(богохул[а-яё]+)(?=[^а-яёa-z0-9]|$)/gi, replace: "Благочестие", msg: "Богохульство пресечено сиреной!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(бога\s+не\s+было|бог\s+не\s+поможет)(?=[^а-яёa-z0-9]|$)/gi, replace: "Упование на милость Всевышнего", msg: "Маловерие и ропот отринуты!" }
+    ];
+
+    const politicalRules = [
+      // Запрет упоминания Алексея Навального
+      { regex: /(?:^|[^а-яёa-z0-9])(навальн[а-яё]+)(?=[^а-яёa-z0-9]|$)/gi, replace: "Запрещённый в летописи субъект", msg: "Упоминание Навального пресечено канонами летописи!" },
+      // Запрет оскорблений российских политиков и государственных деятелей (прямой и обратный порядок слов)
+      { regex: /(?:^|[^а-яёa-z0-9])((?:(?:путин[а-яё]*|владимир\s+владимирович|президент[а-яё]*|депутат[а-яё]*|министр[а-яё]*|чиновник[а-яё]*|политик[а-яё]*|власт[а-яё]*)\s+(?:лох[а-яё]*|вор[а-яё]*|жулик[а-яё]*|мраз[а-яё]*|козел[а-яё]*|козлы|урод[а-яё]*|тварь|твари|пидор[а-яё]*|педик[а-яё]*|гей[а-яё]*|черт[а-яё]*|чмо|гад[а-яё]*|дурак[а-яё]*))|(?:(?:лох[а-яё]*|вор[а-яё]*|жулик[а-яё]*|мраз[а-яё]*|урод[а-яё]*|пидор[а-яё]*|педик[а-яё]*|черт[а-яё]*|чмо|гад[а-яё]*|дурак[а-яё]*)\s+(?:путин[а-яё]*|владимир\s+владимирович|президент[а-яё]*|депутат[а-яё]*|министр[а-яё]*|чиновник[а-яё]*|политик[а-яё]*)))(?=[^а-яёa-z0-9]|$)/gi, replace: "Служение Государству Российскому", msg: "Оскорбление государственных мужей пресечено сиреной!" },
+      { regex: /(?:^|[^а-яёa-z0-9])((?:свергнуть|свержение)\s+(?:власть|правительство|государство))(?=[^а-яёa-z0-9]|$)/gi, replace: "Единство Державы", msg: "Смута и призывы к беспорядкам отринуты!" }
+    ];
+
+    const forbiddenNumbersRules = [
+      { regex: /(?:^|[^0-9])(1488)(?=[^0-9]|$)/g, replace: "Осуждение нацизма и экстремизма", msg: "Экстремистский номер 1488 пресечён!" },
+      { regex: /(?:^|[^0-9])(666)(?=[^0-9]|$)/g, replace: "Изыди, нечистый! Крестная сила", msg: "Число зверя 666 пресечено!" },
+      { regex: /(?:^|[^0-9])(67|52|104)(?=[^0-9]|$)/g, replace: "Запрещённое число", msg: "Запрещённое число пресечено сиреной!" }
+    ];
+
+    const exactBlockedList = new Set([
+      "67", "52", "1488", "104", "666",
+      "навальный", "навального", "навальному", "навальным", "навальном",
+      "пидор", "пидорас", "педик", "педрила",
+      "лох", "лоха", "лохи", "гей", "геи"
+    ]);
+
+    let totalCensoredCount = 0;
+    let known777Matches = 0;
+    let knownPutinInsultMatches = 0;
+    let knownLoyaltyMatches = 0;
+
+    function checkPoliticalAlerts(text) {
+      // 1. Проверка оскорблений Путина и руководства -> "Партия не одобряет" + сирена
+      const putinInsultRegex = /(?:^|[^а-яёa-z0-9])(?:(?:путин[а-яё]*|владимир\s+владимирович)\s+(?:лох[а-яё]*|вор[а-яё]*|жулик[а-яё]*|мраз[а-яё]*|козел[а-яё]*|козлы|урод[а-яё]*|тварь|твари|пидор[а-яё]*|педик[а-яё]*|гей[а-яё]*|черт[а-яё]*|чмо|гад[а-яё]*|дурак[а-яё]*)|(?:лох[а-яё]*|вор[а-яё]*|жулик[а-яё]*|мраз[а-яё]*|урод[а-яё]*|пидор[а-яё]*|педик[а-яё]*|черт[а-яё]*|чмо|гад[а-яё]*|дурак[а-яё]*)\s+(?:путин[а-яё]*|владимир\s+владимирович))(?=[^а-яёa-z0-9]|$)/gi;
+      const putinInsultMatches = text.match(putinInsultRegex);
+      const currentPutinInsultCount = putinInsultMatches ? putinInsultMatches.length : 0;
+
+      if (currentPutinInsultCount > knownPutinInsultMatches) {
+        knownPutinInsultMatches = currentPutinInsultCount;
+        openPartyDisapproveModal();
+      } else if (currentPutinInsultCount < knownPutinInsultMatches) {
+        knownPutinInsultMatches = currentPutinInsultCount;
+      }
+
+      // 2. Проверка верности курсу и партии -> "Партия вас уважает"
+      const loyaltyRegex = /(?:^|[^а-яёa-z0-9])(партия\s+права|партия\s+наш\s+рулевой|верность\s+партии|служу\s+россии|слава\s+россии)(?=[^а-яёa-z0-9]|$)/gi;
+      const loyaltyMatches = text.match(loyaltyRegex);
+      const currentLoyaltyCount = loyaltyMatches ? loyaltyMatches.length : 0;
+
+      if (currentLoyaltyCount > knownLoyaltyMatches) {
+        knownLoyaltyMatches = currentLoyaltyCount;
+        openPartyApproveModal();
+      } else if (currentLoyaltyCount < knownLoyaltyMatches) {
+        knownLoyaltyMatches = currentLoyaltyCount;
+      }
+    }
+
+    function openPartyDisapproveModal() {
+      const modal = document.getElementById('partyDisapproveModal');
+      if (modal) {
+        playMoralAlarmSiren();
+        triggerVisualAlarm();
+        modal.classList.remove('hidden');
+        modal.style.display = 'flex';
+        showToast("Партия не одобряет несанкционированные помыслы!", "🚨");
+      }
+    }
+
+    function closePartyDisapproveModal() {
+      const modal = document.getElementById('partyDisapproveModal');
+      if (modal) {
+        modal.classList.add('hidden');
+        modal.style.display = 'none';
+      }
+    }
+
+    function openPartyApproveModal() {
+      const modal = document.getElementById('partyApproveModal');
+      if (modal) {
+        playWinSound();
+        modal.classList.remove('hidden');
+        modal.style.display = 'flex';
+        showToast("Партия вас уважает за преданность идеалам!", "⭐");
+      }
+    }
+
+    function closePartyApproveModal() {
+      const modal = document.getElementById('partyApproveModal');
+      if (modal) {
+        modal.classList.add('hidden');
+        modal.style.display = 'none';
+      }
+    }
+
+    function triggerVisualAlarm() {
+      const box = document.getElementById('editorContainer');
+      const shield = document.getElementById('moralShieldBox');
+      if (box) {
+        box.classList.add('siren-active');
+        setTimeout(() => box.classList.remove('siren-active'), 1200);
+      }
+      if (shield) {
+        shield.classList.add('siren-active');
+        setTimeout(() => shield.classList.remove('siren-active'), 1200);
+      }
+    }
+
+    function showCensorAlert(text) {
+      const banner = document.getElementById('censorAlertBanner');
+      const textEl = document.getElementById('censorAlertText');
+      if (banner && textEl) {
+        textEl.textContent = text;
+        banner.classList.remove('hidden');
+        clearTimeout(banner._timer);
+        banner._timer = setTimeout(() => banner.classList.add('hidden'), 4500);
+      }
+    }
+
+    function getActiveSanitizerRules() {
+      const list = [];
+      const shieldMat = document.getElementById('shieldMat');
+      const shieldSlang = document.getElementById('shieldSlang');
+      const shieldOccult = document.getElementById('shieldOccult');
+      const shieldGod = document.getElementById('shieldGod');
+
+      if (!shieldMat || shieldMat.checked) list.push(...matRules);
+      if (shieldSlang && shieldSlang.checked) list.push(...slangRules);
+      if (shieldOccult && shieldOccult.checked) list.push(...occultRules);
+      if (!shieldGod || shieldGod.checked) list.push(...blasphemyRules);
+      list.push(...politicalRules);
+      list.push(...forbiddenNumbersRules);
+      return list;
+    }
+
+    // Check Easter Egg 777 (Only triggers on a newly typed 777)
+    function checkEasterEgg777(text) {
+      const matches = text.match(/(?:^|[^0-9])777(?=[^0-9]|$)/g);
+      const currentCount = matches ? matches.length : 0;
+
+      if (currentCount > known777Matches) {
+        known777Matches = currentCount;
+        openPrizeModal();
+      } else if (currentCount < known777Matches) {
+        known777Matches = currentCount;
+      }
+    }
+
+    function openPrizeModal() {
+      const modal = document.getElementById('prize777Modal');
+      if (modal) {
+        playWinSound();
+        modal.classList.remove('hidden');
+        modal.style.display = 'flex';
+        showToast("Партия гордится тобой! Выигран святой приз!", "🏆");
+      }
+    }
+
+    function closePrizeModalDialog() {
+      const modal = document.getElementById('prize777Modal');
+      if (modal) {
+        modal.classList.add('hidden');
+        modal.style.display = 'none';
+      }
+    }
+
+    function sanitizeField(inputEl, forceCheckAll = false) {
+      if (!inputEl) return;
+      const text = inputEl.value;
+      const cursorPos = inputEl.selectionStart ?? text.length;
+
+      // 777 check
+      checkEasterEgg777(text);
+
+      // Проверка политических триггеров
+      checkPoliticalAlerts(text);
+
+      // Determine active word under typing caret to avoid cutting half-typed innocent words
+      let activeWord = null;
+      let activeWordStart = -1;
+      let activeWordEnd = -1;
+
+      if (!forceCheckAll && typeof cursorPos === 'number') {
+        const left = text.slice(0, cursorPos);
+        const right = text.slice(cursorPos);
+        const leftMatch = left.match(/[а-яёa-z0-9]+$/i);
+        const rightMatch = right.match(/^[а-яёa-z0-9]+/i);
+
+        if (leftMatch) {
+          activeWordStart = cursorPos - leftMatch[0].length;
+          activeWordEnd = cursorPos + (rightMatch ? rightMatch[0].length : 0);
+          activeWord = text.slice(activeWordStart, activeWordEnd);
+        }
+      }
+
+      let prefix = text;
+      let preservedWord = "";
+      let suffix = "";
+
+      // If active word is not a fully completed blocked word, preserve it while typing
+      if (activeWord && !exactBlockedList.has(activeWord.toLowerCase().trim())) {
+        prefix = text.slice(0, activeWordStart);
+        preservedWord = activeWord;
+        suffix = text.slice(activeWordEnd);
+      }
+
+      const rules = getActiveSanitizerRules();
+      let altered = false;
+      let notice = "Запретное слово или число пресечено сиреной и преображено!";
+
+      const runReplace = (part) => {
+        let res = part;
+        rules.forEach(({ regex, replace, msg }) => {
+          regex.lastIndex = 0;
+          res = res.replace(regex, (match, captured) => {
+            altered = true;
+            totalCensoredCount++;
+            if (msg) notice = msg;
+            return match.replace(captured, `«${replace}»`);
+          });
+        });
+        return res;
+      };
+
+      const cleanPrefix = runReplace(prefix);
+      const cleanSuffix = runReplace(suffix);
+      const result = cleanPrefix + preservedWord + cleanSuffix;
+
+      if (altered) {
+        const diff = cleanPrefix.length - prefix.length;
+        const newPos = Math.max(0, Math.min(result.length, cursorPos + diff));
+
+        inputEl.value = result;
+        if (typeof inputEl.setSelectionRange === 'function') {
+          inputEl.setSelectionRange(newPos, newPos);
+        }
+
+        playMoralAlarmSiren();
+        triggerVisualAlarm();
+        showCensorAlert(`🚨 ${notice}`);
+      }
+    }
+
+    let notes = [
+      {
+        id: "note-1",
+        title: "О праведном труде и созидании",
+        folder: "Особая папка",
+        content: "Каждый день начинай с чистым сердцем и мыслью об укреплении Отечества. Созидательный труд во славу земли родной — высшая добродетель.",
+        updatedAt: Date.now()
+      }
+    ];
+    let activeNoteId = "note-1";
+    let customFolders = ["Особая папка", "Священные мысли", "Дела Державные"];
+
+    async function initStorage() {
+      if (!firebaseConfig) {
+        return;
+      }
+      try {
+        app = initializeApp(firebaseConfig);
+        db = getFirestore(app);
+        auth = getAuth(app);
+
+        if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+          await signInWithCustomToken(auth, __initial_auth_token);
+        } else {
+          await signInAnonymously(auth);
+        }
+
+        currentUser = auth.currentUser;
+        userId = currentUser?.uid;
+        if (!userId) return;
+
+        // Synchronize notes
+        const notesColl = collection(db, 'artifacts', appId, 'users', userId, 'notes');
+        onSnapshot(notesColl, (snapshot) => {
+          if (!snapshot.empty) {
+            const loaded = [];
+            snapshot.forEach(docSnap => {
+              const d = docSnap.data();
+              loaded.push({
+                id: docSnap.id,
+                title: d.title || 'Без заголовка',
+                folder: d.folder || 'Особая папка',
+                content: d.content || '',
+                updatedAt: d.updatedAt || Date.now()
+              });
+            });
+            loaded.sort((a, b) => (b.updatedAt || 0) - (a.updatedAt || 0));
+            notes = loaded;
+            if (!notes.find(n => n.id === activeNoteId) && notes.length > 0) {
+              activeNoteId = notes[0].id;
+            }
+            loadNote(activeNoteId);
+            renderNotesList();
+            updateStats();
+          } else {
+            saveNoteToStorage(notes[0]);
+          }
+        }, (err) => {
+          console.error("Storage error (notes):", err);
+        });
+
+        // Synchronize custom folders
+        const foldersDocRef = doc(db, 'artifacts', appId, 'users', userId, 'metadata', 'folders');
+        onSnapshot(foldersDocRef, (docSnap) => {
+          if (docSnap.exists()) {
+            const data = docSnap.data();
+            if (data.folders && Array.isArray(data.folders)) {
+              customFolders = data.folders;
+              renderFolders();
+              renderNotesList();
+            }
+          }
+        }, (err) => {
+          console.error("Storage error (folders):", err);
+        });
+      } catch (err) {
+        console.error("Failed to initialize storage:", err);
+      }
+    }
+
+    async function saveNoteToStorage(note) {
+      if (!db || !userId || !note) return;
+      try {
+        const noteDocRef = doc(db, 'artifacts', appId, 'users', userId, 'notes', note.id);
+        await setDoc(noteDocRef, {
+          title: note.title || '',
+          folder: note.folder || 'Особая папка',
+          content: note.content || '',
+          updatedAt: note.updatedAt || Date.now()
+        }, { merge: true });
+      } catch (err) {
+        console.error("Error saving note:", err);
+      }
+    }
+
+    async function deleteNoteFromStorage(noteId) {
+      if (!db || !userId || !noteId) return;
+      try {
+        const noteDocRef = doc(db, 'artifacts', appId, 'users', userId, 'notes', noteId);
+        await deleteDoc(noteDocRef);
+      } catch (err) {
+        console.error("Error deleting note:", err);
+      }
+    }
+
+    async function saveFoldersToStorage(folders) {
+      if (!db || !userId || !folders) return;
+      try {
+        const foldersDocRef = doc(db, 'artifacts', appId, 'users', userId, 'metadata', 'folders');
+        await setDoc(foldersDocRef, {
+          folders: folders,
+          updatedAt: Date.now()
+        });
+      } catch (err) {
+        console.error("Error saving folders:", err);
+      }
+    }
+
+    // DOM Elements
+    const noteTitle = document.getElementById('noteTitle');
+    const noteContent = document.getElementById('noteContent');
+    const noteFolder = document.getElementById('noteFolder');
+    const folderFilter = document.getElementById('folderFilter');
+    const notesList = document.getElementById('notesList');
+    const notesCountLabel = document.getElementById('notesCountLabel');
+    const saveStatus = document.getElementById('saveStatus');
+    const statChars = document.getElementById('statChars');
+    const statWords = document.getElementById('statWords');
+    const stat67Count = document.getElementById('stat67Count');
+    const stat67Badge = document.getElementById('stat67Badge');
+    const statCensored = document.getElementById('statCensored');
+
+    // Mobile View Tab Management
+    let mobileActiveView = 'editor'; // 'notes' or 'editor'
+    const sidebarPanel = document.getElementById('sidebarPanel');
+    const editorContainer = document.getElementById('editorContainer');
+    const tabBtnNotes = document.getElementById('tabBtnNotes');
+    const tabBtnEditor = document.getElementById('tabBtnEditor');
+    const mobileNotesBadge = document.getElementById('mobileNotesBadge');
+    const btnMobileBackToList = document.getElementById('btnMobileBackToList');
+
+    function setMobileView(view) {
+      mobileActiveView = view;
+      if (window.innerWidth >= 768) {
+        // Desktop: show both side by side
+        if (sidebarPanel) sidebarPanel.classList.remove('hidden');
+        if (editorContainer) editorContainer.classList.remove('hidden');
+        return;
+      }
+
+      if (view === 'notes') {
+        if (sidebarPanel) sidebarPanel.classList.remove('hidden');
+        if (editorContainer) editorContainer.classList.add('hidden');
+        if (tabBtnNotes) {
+          tabBtnNotes.className = "py-2 px-3 rounded-lg bg-blue-600 text-white transition flex items-center justify-center gap-1.5 shadow";
+        }
+        if (tabBtnEditor) {
+          tabBtnEditor.className = "py-2 px-3 rounded-lg text-slate-400 hover:text-white transition flex items-center justify-center gap-1.5";
+        }
+      } else {
+        if (sidebarPanel) sidebarPanel.classList.add('hidden');
+        if (editorContainer) editorContainer.classList.remove('hidden');
+        if (tabBtnEditor) {
+          tabBtnEditor.className = "py-2 px-3 rounded-lg bg-blue-600 text-white transition flex items-center justify-center gap-1.5 shadow";
+        }
+        if (tabBtnNotes) {
+          tabBtnNotes.className = "py-2 px-3 rounded-lg text-slate-400 hover:text-white transition flex items-center justify-center gap-1.5";
+        }
+      }
+    }
+
+    if (tabBtnNotes) tabBtnNotes.addEventListener('click', () => setMobileView('notes'));
+    if (tabBtnEditor) tabBtnEditor.addEventListener('click', () => setMobileView('editor'));
+    if (btnMobileBackToList) btnMobileBackToList.addEventListener('click', () => setMobileView('notes'));
+
+    window.addEventListener('resize', () => {
+      if (window.innerWidth >= 768) {
+        if (sidebarPanel) sidebarPanel.classList.remove('hidden');
+        if (editorContainer) editorContainer.classList.remove('hidden');
+      } else {
+        setMobileView(mobileActiveView);
+      }
+    });
+
+    function updateStats() {
+      const text = noteContent.value || '';
+      const chars = text.length;
+      const words = text.trim() ? text.trim().split(/\s+/).length : 0;
+      const matches67 = (text.match(/(?:^|[^0-9])67(?=[^0-9]|$)/g) || []).length;
+
+      statChars.textContent = chars;
+      statWords.textContent = words;
+      statCensored.textContent = totalCensoredCount;
+
+      if (matches67 > 0) {
+        stat67Badge.classList.remove('hidden');
+        stat67Count.textContent = matches67;
+      } else {
+        stat67Badge.classList.add('hidden');
+      }
+    }
+
+    function renderFolders() {
+      folderFilter.innerHTML = '<option value="all">📂 Все папки (Показать всё)</option>';
+      customFolders.forEach(f => {
+        const opt = document.createElement('option');
+        opt.value = f;
+        opt.textContent = `📁 ${f}`;
+        if (f === "Особая папка") opt.selected = true;
+        folderFilter.appendChild(opt);
+      });
+
+      noteFolder.innerHTML = '';
+      customFolders.forEach(f => {
+        const opt = document.createElement('option');
+        opt.value = f;
+        opt.textContent = `📁 ${f}`;
+        noteFolder.appendChild(opt);
+      });
+    }
+
+    function renderNotesList() {
+      const filter = folderFilter.value;
+      const query = (document.getElementById('searchNotes').value || '').toLowerCase();
+
+      const filtered = notes.filter(n => {
+        const matchesFolder = (filter === 'all') || (n.folder === filter);
+        const matchesQuery = n.title.toLowerCase().includes(query) || n.content.toLowerCase().includes(query);
+        return matchesFolder && matchesQuery;
+      });
+
+      const count = filtered.length;
+      notesCountLabel.textContent = `${count} ${count === 1 ? 'помысел' : (count >= 2 && count <= 4 ? 'помысла' : 'помыслов')}`;
+      if (mobileNotesBadge) mobileNotesBadge.textContent = count;
+      notesList.innerHTML = '';
+
+      if (filtered.length === 0) {
+        notesList.innerHTML = `
+          <div class="text-center py-10 px-2 text-slate-500 text-xs">
+            Заметок не найдено.<br>Нажмите «+ Записать новый помысел», чтобы создать первую запись.
+          </div>
+        `;
+        return;
+      }
+
+      filtered.forEach(note => {
+        const isActive = note.id === activeNoteId;
+        const item = document.createElement('div');
+        
+        // Format time string
+        const noteDate = note.updatedAt ? new Date(note.updatedAt) : new Date();
+        const timeFormatted = noteDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+        item.className = `p-3 rounded-xl cursor-pointer transition-all border text-left relative group ${
+          isActive 
+            ? 'bg-gradient-to-r from-blue-950/90 to-slate-900 border-blue-500 shadow-md ring-1 ring-blue-500/40' 
+            : 'bg-slate-950/60 hover:bg-slate-800/60 border-slate-800/80 hover:border-slate-700 text-slate-300'
+        }`;
+
+        // Tricolor left indicator for active note
+        const activeIndicator = isActive 
+          ? '<div class="absolute left-0 top-2 bottom-2 w-1 rounded-r bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.8)]"></div>' 
+          : '';
+
+        item.innerHTML = `
+          ${activeIndicator}
+          <div class="flex items-center justify-between gap-1 mb-1 pl-1">
+            <h4 class="font-bold text-xs truncate ${isActive ? 'text-blue-200' : 'text-slate-200'}">
+              ${escapeHtml(note.title || 'Без заголовка')}
+            </h4>
+            <span class="text-[9px] font-mono text-slate-400 flex-shrink-0">
+              ${timeFormatted}
+            </span>
+          </div>
+          <p class="text-[11px] ${isActive ? 'text-slate-300' : 'text-slate-400'} line-clamp-2 pl-1 leading-snug">
+            ${escapeHtml(note.content || 'Пустой помысел...')}
+          </p>
+          <div class="mt-1.5 pl-1 flex items-center justify-between text-[9px] text-slate-500">
+            <span class="px-1.5 py-0.5 rounded bg-slate-900 border border-slate-800 truncate max-w-[120px]">
+              ${escapeHtml(note.folder || 'Особая папка')}
+            </span>
+            <span class="${isActive ? 'text-blue-400' : 'text-slate-500'}">
+              ${isActive ? '● Выбрана' : 'Выбрать →'}
+            </span>
+          </div>
+        `;
+
+        item.addEventListener('click', () => {
+          saveCurrentNote();
+          loadNote(note.id);
+          // On mobile, auto switch to editor when a note is picked
+          if (window.innerWidth < 768) {
+            setMobileView('editor');
+          }
+        });
+
+        notesList.appendChild(item);
+      });
+    }
+
+    function escapeHtml(str) {
+      return (str || '').replace(/[&<>"']/g, m => ({
+        '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+      }[m]));
+    }
+
+    function loadNote(id) {
+      const found = notes.find(n => n.id === id);
+      if (!found) return;
+      activeNoteId = id;
+      noteTitle.value = found.title;
+      noteContent.value = found.content;
+      noteFolder.value = found.folder || 'Особая папка';
+      updateStats();
+      renderNotesList();
+    }
+
+    function saveCurrentNote() {
+      const active = notes.find(n => n.id === activeNoteId);
+      if (active) {
+        active.title = noteTitle.value.trim() || 'Без заголовка';
+        active.content = noteContent.value;
+        active.folder = noteFolder.value;
+        active.updatedAt = Date.now();
+        saveNoteToStorage(active);
+      }
+      const timeStr = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+      saveStatus.textContent = `Сохранено в ${timeStr}`;
+    }
+
+    let autoSaveTimer = null;
+    function scheduleAutoSave() {
+      clearTimeout(autoSaveTimer);
+      saveStatus.textContent = 'Сохранение...';
+      autoSaveTimer = setTimeout(() => {
+        saveCurrentNote();
+        renderNotesList();
+      }, 600);
+    }
+
+    noteContent.addEventListener('input', () => {
+      sanitizeField(noteContent, false);
+      updateStats();
+      scheduleAutoSave();
+    });
+
+    noteTitle.addEventListener('input', () => {
+      sanitizeField(noteTitle, false);
+      scheduleAutoSave();
+    });
+
+    noteContent.addEventListener('blur', () => {
+      sanitizeField(noteContent, true);
+      updateStats();
+      saveCurrentNote();
+      renderNotesList();
+    });
+
+    noteTitle.addEventListener('blur', () => {
+      sanitizeField(noteTitle, true);
+      saveCurrentNote();
+      renderNotesList();
+    });
+
+    noteFolder.addEventListener('change', () => {
+      saveCurrentNote();
+      renderNotesList();
+    });
+
+    document.getElementById('btnSaveNote').addEventListener('click', () => {
+      sanitizeField(noteTitle, true);
+      sanitizeField(noteContent, true);
+      saveCurrentNote();
+      renderNotesList();
+      showToast("Помысел сохранён в летописи!", "💾");
+    });
+
+    document.getElementById('btnCreateNote').addEventListener('click', () => {
+      saveCurrentNote();
+      const newId = 'note-' + Date.now();
+      const currentFolder = folderFilter.value !== 'all' ? folderFilter.value : 'Особая папка';
+      const newNote = {
+        id: newId,
+        title: 'Новый помысел',
+        folder: currentFolder,
+        content: '',
+        updatedAt: Date.now()
+      };
+      notes.unshift(newNote);
+      loadNote(newId);
+      // On mobile, switch directly to editor
+      if (window.innerWidth < 768) {
+        setMobileView('editor');
+      }
+      noteTitle.focus();
+      noteTitle.select();
+      showToast("Создан новый помысел", "✨");
+    });
+
+    document.getElementById('btnDeleteNote').addEventListener('click', () => {
+      if (notes.length <= 1) {
+        showToast("Нельзя удалить единственный помысел", "⚠️");
+        return;
+      }
+      const toDeleteId = activeNoteId;
+      notes = notes.filter(n => n.id !== toDeleteId);
+      deleteNoteFromStorage(toDeleteId);
+      loadNote(notes[0].id);
+      showToast("Помысел удалён из летописи", "🗑️");
+    });
+
+    document.getElementById('btnNewFolder').addEventListener('click', () => {
+      const name = prompt("Введите название новой папки:", "Дела Благочестивые");
+      if (name && name.trim()) {
+        const cleanName = name.trim();
+        if (!customFolders.includes(cleanName)) {
+          customFolders.push(cleanName);
+          saveFoldersToStorage(customFolders);
+          renderFolders();
+          folderFilter.value = cleanName;
+          noteFolder.value = cleanName;
+          saveCurrentNote();
+          renderNotesList();
+          showToast(`Создана папка «${cleanName}»`, "📁");
+        }
+      }
+    });
+
+    folderFilter.addEventListener('change', renderNotesList);
+    document.getElementById('searchNotes').addEventListener('input', renderNotesList);
+
+    function showToast(msg, icon = "✨") {
+      const toast = document.getElementById('toast');
+      const msgEl = document.getElementById('toastMsg');
+      const iconEl = document.getElementById('toastIcon');
+      if (toast && msgEl) {
+        msgEl.textContent = msg;
+        if (iconEl) iconEl.textContent = icon;
+        toast.classList.remove('translate-y-24', 'opacity-0');
+        clearTimeout(toast._timer);
+        toast._timer = setTimeout(() => {
+          toast.classList.add('translate-y-24', 'opacity-0');
+        }, 2600);
+      }
+    }
+
+    function setupModal(triggerId, modalId, closeIds) {
+      const trigger = document.getElementById(triggerId);
+      const modal = document.getElementById(modalId);
+      if (!modal) return;
+
+      if (trigger) {
+        trigger.addEventListener('click', () => {
+          modal.classList.remove('hidden');
+          modal.style.display = 'flex';
+        });
+      }
+
+      closeIds.forEach(cid => {
+        const btn = document.getElementById(cid);
+        if (btn) {
+          btn.addEventListener('click', () => {
+            modal.classList.add('hidden');
+            modal.style.display = 'none';
+          });
+        }
+      });
+
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          modal.classList.add('hidden');
+          modal.style.display = 'none';
+        }
+      });
+    }
+
+    setupModal('btnOpenPrayers', 'prayersModal', ['closePrayersModal', 'btnClosePrayersBottom']);
+    setupModal('btnOpenPsalm', 'psalmModal', ['closePsalmModal']);
+    setupModal('btnOpenCalc', 'calcModal', ['closeCalcModal']);
+
+    // Prize 777 Modal listeners
+    const closePrizeBtn = document.getElementById('closePrizeModal');
+    const claimPrizeBtn = document.getElementById('btnClaimPrize');
+    if (closePrizeBtn) closePrizeBtn.addEventListener('click', closePrizeModalDialog);
+    if (claimPrizeBtn) {
+      claimPrizeBtn.addEventListener('click', () => {
+        closePrizeModalDialog();
+        showToast("Святой приз получен во славу веры и Отечества!", "🎖️");
+      });
+    }
+
+    // Party Disapprove Modal Listeners
+    document.getElementById('closeDisapproveModal')?.addEventListener('click', closePartyDisapproveModal);
+    document.getElementById('btnAcknowledgeDisapprove')?.addEventListener('click', () => {
+      closePartyDisapproveModal();
+      showToast("Дисциплина восстановлена", "🛡️");
+    });
+
+    // Party Approve Modal Listeners
+    document.getElementById('closeApproveModal')?.addEventListener('click', closePartyApproveModal);
+    document.getElementById('btnAcceptApprove')?.addEventListener('click', () => {
+      closePartyApproveModal();
+      showToast("Высокое доверие принято к сведению!", "⭐");
+    });
+
+    // Sound tests
+    document.getElementById('btnTestSiren')?.addEventListener('click', () => {
+      playMoralAlarmSiren();
+      triggerVisualAlarm();
+      showCensorAlert("🚨 Учебная тревога Дозора Чистоты Речи!");
+    });
+
+    document.getElementById('btnPlayBell')?.addEventListener('click', () => {
+      playBellSound();
+      showToast("Колокольный звон во славу Божию", "🔔");
+    });
+
+    document.getElementById('closeCensorAlert')?.addEventListener('click', () => {
+      document.getElementById('censorAlertBanner')?.classList.add('hidden');
+    });
+
+    // Copy Text
+    document.getElementById('btnCopyText')?.addEventListener('click', () => {
+      const text = `${noteTitle.value}\n\n${noteContent.value}`;
+      const tempArea = document.createElement('textarea');
+      tempArea.value = text;
+      document.body.appendChild(tempArea);
+      tempArea.select();
+      document.execCommand('copy');
+      document.body.removeChild(tempArea);
+      showToast("Помысел скопирован в буфер обмена!", "📋");
+    });
+
+    // Insert Psalm quote button
+    document.getElementById('btnInsert67')?.addEventListener('click', () => {
+      const quote = "\n\n«Да воскреснет Бог, и расточатся врази Его...» (Псалом 67)";
+      noteContent.value += quote;
+      sanitizeField(noteContent, true);
+      updateStats();
+      scheduleAutoSave();
+      showToast("Цитата Псалма 67 добавлена", "📜");
+    });
+
+    document.getElementById('btnInsertPsalmToNote')?.addEventListener('click', () => {
+      const quote = "\n\n«Да воскреснет Бог, и расточатся врази Его, и да бежат от лица Его ненавидящии Его. Яко исчезает дым, да исчезнут...» (Псалом 67)";
+      noteContent.value += quote;
+      document.getElementById('psalmModal').style.display = 'none';
+      document.getElementById('psalmModal').classList.add('hidden');
+      sanitizeField(noteContent, true);
+      updateStats();
+      scheduleAutoSave();
+      showToast("Псалом 67 внесён в помысел", "📜");
+    });
+
+    // Insert Prayer Buttons
+    document.querySelectorAll('.btnInsertPrayer').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const idx = e.target.getAttribute('data-prayer');
+        const prayerElem = document.getElementById(`prayerText${idx}`);
+        if (prayerElem) {
+          noteContent.value += `\n\n${prayerElem.textContent.trim()}`;
+          document.getElementById('prayersModal').style.display = 'none';
+          document.getElementById('prayersModal').classList.add('hidden');
+          playBellSound();
+          updateStats();
+          scheduleAutoSave();
+          showToast("Молитва бережно внесена в блокнот", "🙏");
+        }
+      });
+    });
+
+    let calcCurrent = '0';
+    let calcExpression = '';
+    const calcDisplay = document.getElementById('calcDisplay');
+    const calcExprDisplay = document.getElementById('calcExpression');
+
+    function updateCalcScreen() {
+      calcDisplay.textContent = calcCurrent;
+      calcExprDisplay.textContent = calcExpression;
+    }
+
+    document.querySelectorAll('.calc-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const val = btn.getAttribute('data-val');
+        const action = btn.getAttribute('data-action');
+
+        if (val !== null) {
+          if (calcCurrent === '0' && val !== '.') {
+            calcCurrent = val;
+          } else {
+            calcCurrent += val;
+          }
+          updateCalcScreen();
+        } else if (action) {
+          switch (action) {
+            case 'clear':
+              calcCurrent = '0';
+              calcExpression = '';
+              break;
+            case 'back':
+              calcCurrent = calcCurrent.length > 1 ? calcCurrent.slice(0, -1) : '0';
+              break;
+            case 'percent':
+              try {
+                calcCurrent = String(parseFloat(calcCurrent) / 100);
+              } catch (_) { calcCurrent = '0'; }
+              break;
+            case 'calculate':
+              try {
+                const sanitized = (calcExpression + calcCurrent).replace(/[^0-9+\-*/.]/g, '');
+                const result = Function(`'use strict'; return (${sanitized})`)();
+                calcExpression = `${calcExpression + calcCurrent} =`;
+                calcCurrent = String(Number(result.toFixed(6)));
+              } catch (e) {
+                calcCurrent = 'Ошибка';
+              }
+              break;
+          }
+          updateCalcScreen();
+        }
+      });
+    });
+
+    // Calc button №67 (triggers canonical alert as forbidden number)
+    document.getElementById('btnCalc67')?.addEventListener('click', () => {
+      calcCurrent = '67';
+      updateCalcScreen();
+      playMoralAlarmSiren();
+      triggerVisualAlarm();
+      showCensorAlert("🚨 Число 67 запрещено каноном в калькуляторе!");
+    });
+
+    // Insert Calculator Result to Note
+    document.getElementById('btnInsertCalcResult')?.addEventListener('click', () => {
+      noteContent.value += `\n[Расчёт Монолит: ${calcCurrent}]`;
+      document.getElementById('calcModal').style.display = 'none';
+      document.getElementById('calcModal').classList.add('hidden');
+      updateStats();
+      scheduleAutoSave();
+      showToast(`Результат ${calcCurrent} перенесён в помысел`, "🧮");
+    });
+
+    window.addEventListener('DOMContentLoaded', () => {
+      renderFolders();
+      loadNote('note-1');
+      initStorage();
+
+      // Initialize mobile layout
+      if (window.innerWidth < 768) {
+        setMobileView('editor');
+      }
+
+      // Ensure political modals are hidden on boot
+      const disModal = document.getElementById('partyDisapproveModal');
+      if (disModal) {
+        disModal.classList.add('hidden');
+        disModal.style.display = 'none';
+      }
+      const appModal = document.getElementById('partyApproveModal');
+      if (appModal) {
+        appModal.classList.add('hidden');
+        appModal.style.display = 'none';
+      }
+
+      // Initialize 777 count to prevent false positives on boot
+      known777Matches = (noteContent.value.match(/(?:^|[^0-9])777(?=[^0-9]|$)/g) || []).length;
+    });
+  </script>
+</body>
+</html>
