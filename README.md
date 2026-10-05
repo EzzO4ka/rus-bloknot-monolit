@@ -1,8 +1,7 @@
 # 🇷🇺 Патриотический Блокнот «Монолит» — Дозор Чистоты
 
-<p align="center">
-  <img src="https://avatars.mds.yandex.net/get-mpic/20856157/pice3218653c7f8d5b809aafc72f26f02df/orig" alt="Монолит" width="180" style="border-radius: 16px;" />
-</p>
+<img width="2752" height="1536" alt="Gemini_Generated_Image_80ztxw80ztxw80zt" src="https://github.com/user-attachments/assets/44943df7-45fd-4851-b22f-30dea6201a84" />
+
 
 <p align="center">
   <b>«Пишите помыслы праведные, созидательные и чистые во славу веры и Отечества!»</b>
