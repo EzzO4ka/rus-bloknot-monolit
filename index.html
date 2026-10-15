@@ -100,10 +100,6 @@
       <div class="flex items-center gap-3">
         <!-- Аппликационная иконка с оригинальным 3D-логотипом -->
         <div class="w-12 h-12 sm:w-14 sm:h-14 flex-shrink-0 monolith-shadow cursor-pointer transition transform hover:scale-105 flex items-center justify-center relative rounded-2xl overflow-hidden bg-white border-2 border-blue-500/40 shadow-lg" title="Блокнот Монолит — Патриотический Дозор Чистоты">
-          <!-- 
-            Основное изображение: ищет logo.png, logo.jpg или Gemini_Generated_Image_sb0jjosb0jjosb0j.jpeg.
-            На GitHub файл сохраняется как logo.png рядом с index.html и отображается точь-в-точь как на картинке.
-          -->
           <img 
             id="brandLogoImg" 
             src="logo.png" 
@@ -143,7 +139,13 @@
       </div>
 
       <!-- Quick Action Buttons -->
-      <div class="flex items-center gap-2">
+      <div class="flex items-center gap-2 flex-wrap justify-end">
+        <!-- Dictionary of Banned Words Button -->
+        <button id="btnOpenDictionary" class="px-2.5 py-1.5 bg-red-950/70 hover:bg-red-900 border border-red-600/50 hover:border-red-400 text-red-200 text-xs font-semibold rounded-lg transition flex items-center gap-1.5 shadow-sm" title="Открыть полный реестр запрещённых слов, жаргонов и сленга">
+          <span>📖</span>
+          <span class="hidden lg:inline">Реестр запретов</span>
+        </button>
+
         <!-- Psalm 67 Button -->
         <button id="btnOpenPsalm" class="px-2.5 py-1.5 bg-amber-950/70 hover:bg-amber-900 border border-amber-600/50 hover:border-amber-400 text-amber-300 text-xs font-semibold rounded-lg transition flex items-center gap-1.5 shadow-sm">
           <span>📜</span>
@@ -221,7 +223,7 @@
       </div>
 
       <!-- Notes History Chronicle List -->
-      <div class="bg-slate-900/90 border border-slate-800 rounded-2xl p-3.5 shadow-lg flex-1 flex flex-col min-h-[260px] md:min-h-[420px]">
+      <div class="bg-slate-900/90 border border-slate-800 rounded-2xl p-3.5 shadow-lg flex-1 flex flex-col min-h-[240px] md:min-h-[380px]">
         <div class="flex items-center justify-between pb-2 mb-2 border-b border-slate-800">
           <div class="flex items-center gap-1.5">
             <span class="text-sm">📜</span>
@@ -231,7 +233,7 @@
         </div>
 
         <!-- Scrollable History List -->
-        <div id="notesList" class="flex-1 overflow-y-auto space-y-2 pr-1 max-h-[380px] md:max-h-[500px]">
+        <div id="notesList" class="flex-1 overflow-y-auto space-y-2 pr-1 max-h-[360px] md:max-h-[460px]">
           <!-- Notes cards dynamically injected here -->
         </div>
       </div>
@@ -243,32 +245,45 @@
             <span class="text-sm">🛡️</span>
             <span class="text-[11px] font-bold uppercase tracking-wider text-slate-300">Дозор Чистоты Речи</span>
           </div>
-          <button id="btnTestSiren" class="px-2 py-0.5 text-[10px] bg-red-950/80 hover:bg-red-900 text-red-200 border border-red-700 rounded-lg transition" title="Проверить звук сирены">
-            🚨 Сирена
-          </button>
+          <div class="flex items-center gap-1">
+            <button id="btnOpenDictFromShield" class="px-2 py-0.5 text-[10px] bg-blue-950/80 hover:bg-blue-900 text-blue-200 border border-blue-700 rounded-lg transition" title="Посмотреть все запрещённые слова">
+              📖 Словник
+            </button>
+            <button id="btnTestSiren" class="px-2 py-0.5 text-[10px] bg-red-950/80 hover:bg-red-900 text-red-200 border border-red-700 rounded-lg transition" title="Проверить звук сирены">
+              🚨 Сирена
+            </button>
+          </div>
         </div>
 
         <p class="text-[10px] text-slate-400 mb-2 leading-tight">
-          Пресекает сквернословие, чужебесие и числа <span class="text-red-400 font-mono">67, 52, 1488, 104, 666</span>.
+          Пресекает сквернословие, молодёжный сленг, блатную феню, офисные англицизмы, игроманию и числа <span class="text-red-400 font-mono">67, 52, 1488, 104, 666</span>.
         </p>
 
         <!-- Canons Switches -->
-        <div class="grid grid-cols-2 gap-1 text-[10px] text-slate-300">
+        <div class="grid grid-cols-2 gap-1.5 text-[10px] text-slate-300">
           <label class="flex items-center gap-1.5 cursor-pointer hover:text-white">
             <input type="checkbox" id="shieldMat" checked class="rounded border-slate-700 text-red-600 focus:ring-0">
-            <span>Без брани</span>
+            <span>Без мата и брани</span>
           </label>
           <label class="flex items-center gap-1.5 cursor-pointer hover:text-white">
             <input type="checkbox" id="shieldSlang" checked class="rounded border-slate-700 text-blue-600 focus:ring-0">
-            <span>Без сленга</span>
+            <span>Без зумер-сленга</span>
+          </label>
+          <label class="flex items-center gap-1.5 cursor-pointer hover:text-white">
+            <input type="checkbox" id="shieldJargon" checked class="rounded border-slate-700 text-indigo-600 focus:ring-0">
+            <span>Без фени и жаргона</span>
+          </label>
+          <label class="flex items-center gap-1.5 cursor-pointer hover:text-white">
+            <input type="checkbox" id="shieldCorp" checked class="rounded border-slate-700 text-cyan-600 focus:ring-0">
+            <span>Без англицизмов</span>
+          </label>
+          <label class="flex items-center gap-1.5 cursor-pointer hover:text-white">
+            <input type="checkbox" id="shieldGamer" checked class="rounded border-slate-700 text-emerald-600 focus:ring-0">
+            <span>Без игромании</span>
           </label>
           <label class="flex items-center gap-1.5 cursor-pointer hover:text-white">
             <input type="checkbox" id="shieldOccult" checked class="rounded border-slate-700 text-amber-500 focus:ring-0">
-            <span>Без гаданий</span>
-          </label>
-          <label class="flex items-center gap-1.5 cursor-pointer hover:text-white">
-            <input type="checkbox" id="shieldGod" checked class="rounded border-slate-700 text-amber-400 focus:ring-0">
-            <span>Благоговение</span>
+            <span>Без оккультизма</span>
           </label>
         </div>
       </div>
@@ -329,7 +344,7 @@
         <div class="flex-1 py-3 flex flex-col">
           <textarea 
             id="noteContent" 
-            placeholder="Пишите мысли праведные, созидательные и чистые... Выберите помысел в истории слева или пишите здесь!" 
+            placeholder="Пишите мысли праведные, созидательные и чистые... Попробуйте ввести любой молодёжный сленг, блатную феню, офисный англицизм или геймерский жаргон — Дозор Чистоты немедленно преобразит их в канонический слог!" 
             class="w-full flex-1 min-h-[340px] sm:min-h-[400px] bg-slate-950/40 border border-slate-800/80 rounded-xl p-4 text-sm sm:text-base text-slate-100 placeholder-slate-600 leading-relaxed focus:outline-none focus:border-blue-500/70 transition resize-none font-sans"
             spellcheck="false"
           ></textarea>
@@ -342,7 +357,7 @@
             <span>Символов: <b id="statChars" class="text-slate-200">0</b></span>
             <span>Слов: <b id="statWords" class="text-slate-200">0</b></span>
             <span class="text-amber-400 hidden" id="stat67Badge">Священных 67: <b id="stat67Count" class="font-mono">0</b></span>
-            <span>Очищено слов: <b id="statCensored" class="text-blue-400">0</b></span>
+            <span>Исправлено словес: <b id="statCensored" class="text-blue-400">0</b></span>
           </div>
 
           <div class="flex items-center gap-2">
@@ -365,7 +380,7 @@
           <span class="text-lg">🕊️</span>
           <div>
             <div class="text-xs font-bold text-slate-200">Традиционные Духовно-Нравственные Ценности</div>
-            <div class="text-[11px] text-slate-400">Служение Отечеству, созидательный труд, семья и чистота совести.</div>
+            <div class="text-[11px] text-slate-400">Служение Отечеству, созидательный труд, семья и чистота родного слова.</div>
           </div>
         </div>
         <div class="tricolor-strip w-14 h-1.5 rounded-full hidden sm:block"></div>
@@ -374,6 +389,172 @@
     </section>
 
   </main>
+
+  <!-- MODAL: Реестр Запретов (Канонический Словарь) -->
+  <div id="dictionaryModal" class="fixed inset-0 bg-black/85 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden" style="display: none;">
+    <div class="bg-slate-900 border border-red-500/40 rounded-3xl max-w-3xl w-full p-5 sm:p-6 shadow-2xl relative max-h-[90vh] flex flex-col">
+      <div class="flex items-center justify-between pb-3 border-b border-slate-800">
+        <div class="flex items-center gap-2.5">
+          <span class="text-2xl">📖</span>
+          <div>
+            <h3 class="text-base sm:text-lg font-bold text-white">Полный Реестр Запретов «Дозора Чистоты»</h3>
+            <p class="text-xs text-slate-400">Жаргоны, сленг, феня и англицизмы, пресекаемые блокнотом (нажмите «Испытать», чтобы проверить в тексте)</p>
+          </div>
+        </div>
+        <button id="closeDictionaryModal" class="text-slate-400 hover:text-white p-1 text-lg">✕</button>
+      </div>
+
+      <div class="flex-1 overflow-y-auto py-4 space-y-5 pr-1 text-xs sm:text-sm">
+        
+        <!-- Category 1: Zoomer & Internet Slang -->
+        <div class="bg-slate-950/80 border border-slate-800 rounded-2xl p-4">
+          <h4 class="font-bold text-blue-400 uppercase tracking-wider text-xs mb-2.5 flex items-center gap-1.5">
+            <span>📱</span> <span>1. Молодёжный, зумерский и интернет-сленг</span>
+          </h4>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+            <div class="p-2 rounded-lg bg-slate-900 border border-slate-800 flex justify-between items-center">
+              <span><b class="text-red-400">квадробер / квадробика</b> → «Четвероногое заблуждение»</span>
+              <button class="btnTryWord text-[10px] px-2 py-0.5 bg-red-950 text-red-300 rounded border border-red-800 hover:bg-red-900" data-word="квадробер ">Испытать</button>
+            </div>
+            <div class="p-2 rounded-lg bg-slate-900 border border-slate-800 flex justify-between items-center">
+              <span><b class="text-red-400">хоббихорсинг</b> → «Скачка на палке потешная»</span>
+              <button class="btnTryWord text-[10px] px-2 py-0.5 bg-red-950 text-red-300 rounded border border-red-800 hover:bg-red-900" data-word="хоббихорсинг ">Испытать</button>
+            </div>
+            <div class="p-2 rounded-lg bg-slate-900 border border-slate-800 flex justify-between items-center">
+              <span><b class="text-red-400">скибиди / ризз</b> → «Бесовское мельтешение»</span>
+              <button class="btnTryWord text-[10px] px-2 py-0.5 bg-red-950 text-red-300 rounded border border-red-800 hover:bg-red-900" data-word="скибиди ">Испытать</button>
+            </div>
+            <div class="p-2 rounded-lg bg-slate-900 border border-slate-800 flex justify-between items-center">
+              <span><b class="text-red-400">чиназес / обоюдно</b> → «Благодать и отрада»</span>
+              <button class="btnTryWord text-[10px] px-2 py-0.5 bg-red-950 text-red-300 rounded border border-red-800 hover:bg-red-900" data-word="чиназес ">Испытать</button>
+            </div>
+            <div class="p-2 rounded-lg bg-slate-900 border border-slate-800 flex justify-between items-center">
+              <span><b class="text-red-400">скуф / альтушка</b> → «Муж зрелых лет / Девица своенравная»</span>
+              <button class="btnTryWord text-[10px] px-2 py-0.5 bg-red-950 text-red-300 rounded border border-red-800 hover:bg-red-900" data-word="скуф ">Испытать</button>
+            </div>
+            <div class="p-2 rounded-lg bg-slate-900 border border-slate-800 flex justify-between items-center">
+              <span><b class="text-red-400">тарелочница / папик</b> → «Девица корыстолюбивая»</span>
+              <button class="btnTryWord text-[10px] px-2 py-0.5 bg-red-950 text-red-300 rounded border border-red-800 hover:bg-red-900" data-word="тарелочница ">Испытать</button>
+            </div>
+            <div class="p-2 rounded-lg bg-slate-900 border border-slate-800 flex justify-between items-center">
+              <span><b class="text-red-400">тюбик / масик / чечик</b> → «Отрок неопытный»</span>
+              <button class="btnTryWord text-[10px] px-2 py-0.5 bg-red-950 text-red-300 rounded border border-red-800 hover:bg-red-900" data-word="тюбик ">Испытать</button>
+            </div>
+            <div class="p-2 rounded-lg bg-slate-900 border border-slate-800 flex justify-between items-center">
+              <span><b class="text-red-400">абьюзер / газлайтинг</b> → «Притеснитель / Лукавое морочение»</span>
+              <button class="btnTryWord text-[10px] px-2 py-0.5 bg-red-950 text-red-300 rounded border border-red-800 hover:bg-red-900" data-word="абьюзер ">Испытать</button>
+            </div>
+            <div class="p-2 rounded-lg bg-slate-900 border border-slate-800 flex justify-between items-center">
+              <span><b class="text-red-400">редфлаг / делулу / слей</b> → «Знамение опасное / Прелесть»</span>
+              <button class="btnTryWord text-[10px] px-2 py-0.5 bg-red-950 text-red-300 rounded border border-red-800 hover:bg-red-900" data-word="делулу ">Испытать</button>
+            </div>
+            <div class="p-2 rounded-lg bg-slate-900 border border-slate-800 flex justify-between items-center">
+              <span><b class="text-red-400">душнила / токсик / кринж</b> → «Строгий ревнитель устава»</span>
+              <button class="btnTryWord text-[10px] px-2 py-0.5 bg-red-950 text-red-300 rounded border border-red-800 hover:bg-red-900" data-word="душнила ">Испытать</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Category 2: Prison & Street Jargon (Феня) -->
+        <div class="bg-slate-950/80 border border-slate-800 rounded-2xl p-4">
+          <h4 class="font-bold text-indigo-400 uppercase tracking-wider text-xs mb-2.5 flex items-center gap-1.5">
+            <span>⛓️</span> <span>2. Блатной жаргон («Феня») и уличная лексика</span>
+          </h4>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+            <div class="p-2 rounded-lg bg-slate-900 border border-slate-800 flex justify-between items-center">
+              <span><b class="text-red-400">чушпан / пацан</b> → «Отрок смирный / Добрый молодец»</span>
+              <button class="btnTryWord text-[10px] px-2 py-0.5 bg-red-950 text-red-300 rounded border border-red-800 hover:bg-red-900" data-word="чушпан ">Испытать</button>
+            </div>
+            <div class="p-2 rounded-lg bg-slate-900 border border-slate-800 flex justify-between items-center">
+              <span><b class="text-red-400">зашквар / фраер</b> → «Позор пред людьми и Богом»</span>
+              <button class="btnTryWord text-[10px] px-2 py-0.5 bg-red-950 text-red-300 rounded border border-red-800 hover:bg-red-900" data-word="зашквар ">Испытать</button>
+            </div>
+            <div class="p-2 rounded-lg bg-slate-900 border border-slate-800 flex justify-between items-center">
+              <span><b class="text-red-400">бабло / лавэ / кэш</b> → «Злато-серебро трудовое»</span>
+              <button class="btnTryWord text-[10px] px-2 py-0.5 bg-red-950 text-red-300 rounded border border-red-800 hover:bg-red-900" data-word="бабло ">Испытать</button>
+            </div>
+            <div class="p-2 rounded-lg bg-slate-900 border border-slate-800 flex justify-between items-center">
+              <span><b class="text-red-400">малява / предъява / шмон</b> → «Грамота / Укоризна строгая»</span>
+              <button class="btnTryWord text-[10px] px-2 py-0.5 bg-red-950 text-red-300 rounded border border-red-800 hover:bg-red-900" data-word="малява ">Испытать</button>
+            </div>
+            <div class="p-2 rounded-lg bg-slate-900 border border-slate-800 flex justify-between items-center">
+              <span><b class="text-red-400">терпила / стукач / крыса</b> → «Многотерпеливый страстотерпец»</span>
+              <button class="btnTryWord text-[10px] px-2 py-0.5 bg-red-950 text-red-300 rounded border border-red-800 hover:bg-red-900" data-word="терпила ">Испытать</button>
+            </div>
+            <div class="p-2 rounded-lg bg-slate-900 border border-slate-800 flex justify-between items-center">
+              <span><b class="text-red-400">кент / кипиш / халява</b> → «Товарищ верный / Смута мирская»</span>
+              <button class="btnTryWord text-[10px] px-2 py-0.5 bg-red-950 text-red-300 rounded border border-red-800 hover:bg-red-900" data-word="кипиш ">Испытать</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Category 3: Office & Corporate Buzzwords -->
+        <div class="bg-slate-950/80 border border-slate-800 rounded-2xl p-4">
+          <h4 class="font-bold text-cyan-400 uppercase tracking-wider text-xs mb-2.5 flex items-center gap-1.5">
+            <span>💼</span> <span>3. Офисный новояз и бизнес-англицизмы</span>
+          </h4>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+            <div class="p-2 rounded-lg bg-slate-900 border border-slate-800 flex justify-between items-center">
+              <span><b class="text-red-400">коворкинг / воркшоп</b> → «Общинная изба труда»</span>
+              <button class="btnTryWord text-[10px] px-2 py-0.5 bg-red-950 text-red-300 rounded border border-red-800 hover:bg-red-900" data-word="коворкинг ">Испытать</button>
+            </div>
+            <div class="p-2 rounded-lg bg-slate-900 border border-slate-800 flex justify-between items-center">
+              <span><b class="text-red-400">созвон / дейлик / митинг</b> → «Соборное совещание»</span>
+              <button class="btnTryWord text-[10px] px-2 py-0.5 bg-red-950 text-red-300 rounded border border-red-800 hover:bg-red-900" data-word="дейлик ">Испытать</button>
+            </div>
+            <div class="p-2 rounded-lg bg-slate-900 border border-slate-800 flex justify-between items-center">
+              <span><b class="text-red-400">фидбэк / инсайт / кейс</b> → «Отклик праведный / Озарение»</span>
+              <button class="btnTryWord text-[10px] px-2 py-0.5 bg-red-950 text-red-300 rounded border border-red-800 hover:bg-red-900" data-word="фидбэк ">Испытать</button>
+            </div>
+            <div class="p-2 rounded-lg bg-slate-900 border border-slate-800 flex justify-between items-center">
+              <span><b class="text-red-400">дедлайн / асап / таска</b> → «Срок урочный / Поручение»</span>
+              <button class="btnTryWord text-[10px] px-2 py-0.5 bg-red-950 text-red-300 rounded border border-red-800 hover:bg-red-900" data-word="асап ">Испытать</button>
+            </div>
+            <div class="p-2 rounded-lg bg-slate-900 border border-slate-800 flex justify-between items-center">
+              <span><b class="text-red-400">тимлид / эйчар / коуч</b> → «Воевода дружины / Наставник»</span>
+              <button class="btnTryWord text-[10px] px-2 py-0.5 bg-red-950 text-red-300 rounded border border-red-800 hover:bg-red-900" data-word="тимлид ">Испытать</button>
+            </div>
+            <div class="p-2 rounded-lg bg-slate-900 border border-slate-800 flex justify-between items-center">
+              <span><b class="text-red-400">факап / прокрастинация</b> → «Оплошность / Грех лености»</span>
+              <button class="btnTryWord text-[10px] px-2 py-0.5 bg-red-950 text-red-300 rounded border border-red-800 hover:bg-red-900" data-word="прокрастинация ">Испытать</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Category 4: Gamer Jargon & Bad Habits -->
+        <div class="bg-slate-950/80 border border-slate-800 rounded-2xl p-4">
+          <h4 class="font-bold text-emerald-400 uppercase tracking-wider text-xs mb-2.5 flex items-center gap-1.5">
+            <span>🎮</span> <span>4. Игроманский жаргон и пагубные страсти</span>
+          </h4>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+            <div class="p-2 rounded-lg bg-slate-900 border border-slate-800 flex justify-between items-center">
+              <span><b class="text-red-400">нуб / рак / катка / имба</b> → «Ученик / Ратное состязание»</span>
+              <button class="btnTryWord text-[10px] px-2 py-0.5 bg-red-950 text-red-300 rounded border border-red-800 hover:bg-red-900" data-word="катка ">Испытать</button>
+            </div>
+            <div class="p-2 rounded-lg bg-slate-900 border border-slate-800 flex justify-between items-center">
+              <span><b class="text-red-400">читер / афк / ливнуть</b> → «Лукавый обманщик / Отлучка»</span>
+              <button class="btnTryWord text-[10px] px-2 py-0.5 bg-red-950 text-red-300 rounded border border-red-800 hover:bg-red-900" data-word="читер ">Испытать</button>
+            </div>
+            <div class="p-2 rounded-lg bg-slate-900 border border-slate-800 flex justify-between items-center">
+              <span><b class="text-red-400">вейп / подик / одноразка</b> → «Дым праздный бесовский»</span>
+              <button class="btnTryWord text-[10px] px-2 py-0.5 bg-red-950 text-red-300 rounded border border-red-800 hover:bg-red-900" data-word="вейп ">Испытать</button>
+            </div>
+            <div class="p-2 rounded-lg bg-slate-900 border border-slate-800 flex justify-between items-center">
+              <span><b class="text-red-400">бухать / казино / таро</b> → «Трезвение ума / Пустое гадание»</span>
+              <button class="btnTryWord text-[10px] px-2 py-0.5 bg-red-950 text-red-300 rounded border border-red-800 hover:bg-red-900" data-word="бухать ">Испытать</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="pt-3 border-t border-slate-800 flex justify-end">
+        <button id="btnCloseDictionaryBottom" class="px-4 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-xl text-xs transition">
+          Закрыть реестр
+        </button>
+      </div>
+    </div>
+  </div>
 
   <!-- MODAL: Идеи помолиться Богу -->
   <div id="prayersModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden" style="display: none;">
@@ -735,36 +916,146 @@
       }
     }
 
+    // === 1. МАТЕРНАЯ БРАНЬ И ОСКОРБЛЕНИЯ БЛИЖНЕГО ===
     const matRules = [
-      { regex: /(?:^|[^а-яёa-z0-9])(ху[йиеяюё][а-яё]*|поху[йиеяюё][а-яё]*|наху[йиеяюё][а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Благодать Божия" },
-      { regex: /(?:^|[^а-яёa-z0-9])(пизд[а-яё]+)(?=[^а-яёa-z0-9]|$)/gi, replace: "Святая Тишина" },
-      { regex: /(?:^|[^а-яёa-z0-9])(еб[а-яё]+|ёб[а-яё]+|выеб[а-яё]+|доеб[а-яё]+|заеб[а-яё]+|отъеб[а-яё]+)(?=[^а-яёa-z0-9]|$)/gi, replace: "Праведное Деяние" },
-      { regex: /(?:^|[^а-яёa-z0-9])(бл[яе]д[а-яё]*|бля)(?=[^а-яёa-z0-9]|$)/gi, replace: "Спаси Господи" },
-      { regex: /(?:^|[^а-яёa-z0-9])(сук[а-яё]+)(?=[^а-яёa-z0-9]|$)/gi, replace: "Мир В Душе" },
-      { regex: /(?:^|[^а-яёa-z0-9])(пидор[а-яё]*|пидар[а-яё]*|педик[а-яё]*|педрил[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Заблудший Человек" },
-      { regex: /(?:^|[^а-яёa-z0-9])(мудак[а-яё]*|мудил[а-яё]*|гондон[а-яё]*|гандон[а-яё]*|мраз[а-яё]+|уеб[а-яё]+)(?=[^а-яёa-z0-9]|$)/gi, replace: "Незрелый Умом" },
-      { regex: /(?:^|[^а-яёa-z0-9])(лох[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Смиренный гражданин" },
-      { regex: /(?:^|[^а-яёa-z0-9])(гей[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Заблудшая душа" }
+      { regex: /(?:^|[^а-яёa-z0-9])(ху[йиеяюё][а-яё]*|поху[йиеяюё][а-яё]*|наху[йиеяюё][а-яё]*|оху[еия][а-яё]*|аху[еия][а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Благодать Божия", msg: "Матерная брань пресечена сиреной!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(пизд[а-яё]*|распизд[а-яё]*|спизд[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Святая Тишина", msg: "Сквернословие очищено каноном!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(еб[а-яё]+|ёб[а-яё]+|выеб[а-яё]*|доеб[а-яё]*|заеб[а-яё]*|отъеб[а-яё]*|уеб[а-яё]*|долбо[её]б[а-яё]*|еблан[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Праведное Деяние", msg: "Бранное слово пресечено Дозором!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(бл[яе]д[а-яё]*|бля|бляха)(?=[^а-яёa-z0-9]|$)/gi, replace: "Спаси Господи", msg: "Непотребное восклицание заменено молитвой!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(сук[аиуой]|сучк[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Мир В Душе", msg: "Грубое слово пресечено!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(пидор[а-яё]*|пидар[а-яё]*|педик[а-яё]*|педрил[а-яё]*|гомик[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Заблудший Человек", msg: "Срамное ругательство пресечено!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(мудак[а-яё]*|мудил[а-яё]*|гондон[а-яё]*|гандон[а-яё]*|мраз[а-яё]+|ублюд[а-яё]*|гнид[а-яё]*|сволоч[а-яё]*|падл[а-яё]*|скотин[а-яё]*|твар[ьией])(?=[^а-яёa-z0-9]|$)/gi, replace: "Незрелый Умом", msg: "Оскорбление ближнего пресечено!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(дебил[а-яё]*|даун[а-яё]*|дегенерат[а-яё]*|имбецил[а-яё]*|кретин[а-яё]*|идиот[а-яё]*|придурок|придурки|тупиц[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Чадо неразумное", msg: "Уничижение ума ближнего пресечено!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(шлюх[а-яё]*|шалав[а-яё]*|шмар[а-яё]*|проститутк[а-яё]*|путана)(?=[^а-яёa-z0-9]|$)/gi, replace: "Блудница кающаяся", msg: "Блудное оскорбление отринуто!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(говн[а-яё]*|дерьм[а-яё]*|параш[а-яё]*|жоп[а-яё]*|срак[а-яё]*|залуп[а-яё]*|манд[аыуе]|хер[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Тлен земной", msg: "Нечистоплотное слово очищено!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(срат[ьа-яё]*|ссат[ьа-яё]*|пердет[ьа-яё]*|бздет[ьа-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Смирять плоть", msg: "Низменная лексика преображена!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(лох[а-яё]*|чмо|чмошник[а-яё]*|лузер[а-яё]*|нищеброд[а-яё]*|быдл[оа])(?=[^а-яёa-z0-9]|$)/gi, replace: "Смиренный гражданин", msg: "Оскорбление достоинства пресечено!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(гей|геи|геев|геям|лгбт)(?=[^а-яёa-z0-9]|$)/gi, replace: "Отпадение от традиций", msg: "Запрещённая тематика пресечена каноном!" }
     ];
 
+    // === 2. МОЛОДЁЖНЫЙ, ЗУМЕРСКИЙ И ИНТЕРНЕТ-СЛЕНГ ===
     const slangRules = [
-      { regex: /(?:^|[^а-яёa-z0-9])(вайб[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Благорастворение воздухов" },
-      { regex: /(?:^|[^а-яёa-z0-9])(кринж[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Срам душевный" },
-      { regex: /(?:^|[^а-яёa-z0-9])(хайп[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Суета сует" },
-      { regex: /(?:^|[^а-яёa-z0-9])(скуф[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Муж зрелых лет" },
-      { regex: /(?:^|[^а-яёa-z0-9])(альтушк[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Девица своенравная" },
-      { regex: /(?:^|[^а-яёa-z0-9])(сигм[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Смиренный воин" },
-      { regex: /(?:^|[^а-яёa-z0-9])(тюбик[а-яё]*|чечик[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Отрок неопытный" },
-      { regex: /(?:^|[^а-яёa-z0-9])(нормис[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Благочестивый гражданин" },
-      { regex: /(?:^|[^а-яёa-z0-9])(пикми)(?=[^а-яёa-z0-9]|$)/gi, replace: "Тщеславная особа" },
-      { regex: /(?:^|[^а-яёa-z0-9])(дедлайн[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Срок урочный" },
-      { regex: /(?:^|[^а-яёa-z0-9])(тильт[а-яё]*|тильтовать)(?=[^а-яёa-z0-9]|$)/gi, replace: "Минутное уныние" }
+      { regex: /(?:^|[^а-яёa-z0-9])(квадробер[а-яё]*|квадробик[а-яё]*|квадробинг[а-яё]*|фурри)(?=[^а-яёa-z0-9]|$)/gi, replace: "Четвероногое заблуждение", msg: "Квадробика и уподобление зверям пресечены!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(хоббихорсинг[а-яё]*|хоббихорсер[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Скачка на палке потешная", msg: "Праздная забава хоббихорсинга пресечена!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(скибиди)(?=[^а-яёa-z0-9]|$)/gi, replace: "Бесовское мельтешение", msg: "Словесная бессмыслица «скибиди» отринута!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(ризз[а-яё]*|риззлер[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Добродетельное обаяние", msg: "Заморский сленг «ризз» переведён на родной слог!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(чиназес|саунтрес)(?=[^а-яёa-z0-9]|$)/gi, replace: "Благодать и отрада", msg: "Праздный возглас преображён в благодарение!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(обоюдно)(?=[^а-яёa-z0-9]|$)/gi, replace: "Взаимное согласие в правде", msg: "Мемное словечко заменено каноническим!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(босс\s+кфс)(?=[^а-яёa-z0-9]|$)/gi, replace: "Чревоугодник невоздержанный", msg: "Упоминание чревоугодия исправлено!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(найк\s+про)(?=[^а-яёa-z0-9]|$)/gi, replace: "Одеяние нескромное", msg: "Нескромный интернет-мем пресечён!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(вайб[а-яё]*|вайбов[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Благорастворение воздухов", msg: "Чужеродный «вайб» заменён на чистое слово!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(кринж[а-яё]*|кринге)(?=[^а-яёa-z0-9]|$)/gi, replace: "Срам душевный", msg: "Англицизм «кринж» очищен!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(хайп[а-яё]*|хайповать)(?=[^а-яёa-z0-9]|$)/gi, replace: "Суета сует", msg: "Тщеславный «хайп» обличён!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(скуф[а-яё]*|скуфидон[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Муж зрелых лет", msg: "Неуважение к старшим («скуф») пресечено!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(альтушк[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Девица своенравная", msg: "Субкультурное прозвище исправлено!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(тарелочниц[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Девица корыстолюбивая", msg: "Обидное прозвище заменено каноническим!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(сигм[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Смиренный воин", msg: "Горделивый титул «сигма» преображён!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(тюбик[а-яё]*|чечик[а-яё]*|штрих[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Отрок неопытный", msg: "Сленговое прозвище очищено!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(масик[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Добрый молодец", msg: "Сленг преображён в добрый русский слог!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(папик[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Благодетель великовозрастный", msg: "Корыстный сленг исправлен!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(нормис[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Благочестивый гражданин", msg: "Жаргонизм «нормис» преображён!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(пикми)(?=[^а-яёa-z0-9]|$)/gi, replace: "Тщеславная особа", msg: "Англицизм «пикми» пресечён!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(делулу)(?=[^а-яёa-z0-9]|$)/gi, replace: "Пребывание в мечтательной прелести", msg: "Слово «делулу» заменено святоотеческим понятием!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(слей|слеить)(?=[^а-яёa-z0-9]|$)/gi, replace: "Благолепие и стать", msg: "Заморский возглас «слей» очищен!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(флекс[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Тщеславное бахвальство", msg: "Сленг «флекс» обличён!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(чилл[а-яё]*|чилит[ьа-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Праведный покой", msg: "Англицизм «чилл» переведён!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(краш[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Сердечная зазноба", msg: "Слово «краш» заменено русским «зазноба»!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(рофл[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Пустосмешество", msg: "Праздный «рофл» пресечён!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(треш[а-яё]*|трэш[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Мерзость запустения", msg: "Жаргонизм «треш» исправлен!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(крипот[а-яё]*|крипов[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Страх бесовский", msg: "Англицизм «крипота» очищен!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(пруф[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Истинное свидетельство", msg: "Слово «пруфы» переведено на родной язык!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(чел|челик[а-яё]*|чувак[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Ближний твой", msg: "Панибратское обращение возвышено!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(бро|братан[а-яё]*|братюня|братишк[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Брат во Христе", msg: "Уличное обращение преображено!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(бести)(?=[^а-яёa-z0-9]|$)/gi, replace: "Верная соратница", msg: "Англицизм «бести» очищен!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(абьюз[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Притеснение домашнее", msg: "Заморский термин «абьюз» переведён!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(газлайт[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Лукавое морочение", msg: "Англицизм «газлайтинг» обличён!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(токсик[а-яё]*|токсичн[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Ядовитый духом", msg: "Сленг «токсик» исправлен!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(редфлаг[а-яё]*|ред\s+флаг[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Знамение погибельное", msg: "Выражение «ред флаг» заменено каноническим!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(гринфлаг[а-яё]*|грин\s+флаг[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Знамение благое", msg: "Выражение «грин флаг» переведено!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(гостинг|гостить)(?=[^а-яёa-z0-9]|$)/gi, replace: "Тайное бегство", msg: "Психологический англицизм очищен!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(френдзон[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Целомудренное дружество", msg: "Понятие «френдзона» облагорожено!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(хейтер[а-яё]*|хейт[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Злопыхатель неправедный", msg: "Слово «хейт» переведено на русский слог!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(буллинг[а-яё]*|буллит[ьа-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Гонение на ближнего", msg: "Англицизм «буллинг» заменён!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(шеймит[ьа-яё]*|шейминг[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Поношение публичное", msg: "Слово «шейминг» исправлено!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(тильт[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Минутное уныние", msg: "Унылый сленг «тильт» пресечён!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(душнил[а-яё]*|душн[ыйаяоеые]+)(?=[^а-яёa-z0-9]|$)/gi, replace: "Строгий ревнитель устава", msg: "Жаргонизм «душнила» преображён!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(спойлер[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Преждевременное откровение", msg: "Слово «спойлер» заменено!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(стрим[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Всенародное вещание", msg: "Слово «стрим» переведено!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(донат[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Добровольное подаяние", msg: "Слово «донат» заменено на «подаяние»!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(тикток[а-яё]*|рилс[а-яё]*|шортс[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Праздное лицезрелище", msg: "Праздные видеосервисы обличены!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(зумер[а-яё]*|бумер[а-яё]*|миллениал[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Поколение рода нашего", msg: "Западное деление поколений исправлено!" }
     ];
 
+    // === 3. БЛАТНОЙ ЖАРГОН («ФЕНЯ») И УЛИЧНАЯ ЛЕКСИКА ===
+    const jargonRules = [
+      { regex: /(?:^|[^а-яёa-z0-9])(пацан[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Добрый молодец", msg: "Уличный жаргон «пацан» облагорожен!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(чушпан[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Отрок смирный", msg: "Уличное прозвище «чушпан» пресечено!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(маляв[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Грамота тайная", msg: "Воровской жаргон «малява» пресечён!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(бабло|бабки|бабос[а-яё]*|лавэ|кэш)(?=[^а-яёa-z0-9]|$)/gi, replace: "Злато-серебро трудовое", msg: "Жаргонное название денег очищено!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(кент[а-яё]*|кореш[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Товарищ верный", msg: "Блатное слово «кент» исправлено!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(фраер[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Щёголь неразумный", msg: "Тюремная феня («фраер») пресечена!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(зашквар[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Позор пред людьми и Богом", msg: "Тюремный жаргон «зашквар» отринут!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(предъяв[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Укоризна строгая", msg: "Жаргонизм «предъява» заменён!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(терпил[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Многотерпеливый страстотерпец", msg: "Горделивое глумление («терпила») пресечено!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(стукач[а-яё]*|крыс[аыуе])(?=[^а-яёa-z0-9]|$)/gi, replace: "Тайный доноситель", msg: "Воровской ярлык пресечён!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(шмон[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Досмотр строгий", msg: "Блатной жаргон «шмон» исправлен!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(кипиш[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Смута мирская", msg: "Жаргонизм «кипиш» очищен!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(блатн[ойаяые]+)(?=[^а-яёa-z0-9]|$)/gi, replace: "Горделивый нравом", msg: "Воровское чванство пресечено!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(мент|менты|ментов|мусор[ауом]|легав[ыеый]+)(?=[^а-яёa-z0-9]|$)/gi, replace: "Стражи Государева порядка", msg: "Неуважение к стражам закона пресечено!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(тюряг[а-яё]*|кич[аеу])(?=[^а-яёa-z0-9]|$)/gi, replace: "Место покаяния и исправления", msg: "Тюремный жаргон очищен!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(накосяч[а-яё]*|косяк[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Прегрешение невольное", msg: "Жаргонный «косяк» исправлен!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(отмазк[а-яё]*|отмазат[ьа-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Лукавое оправдание", msg: "Жаргонизм «отмазка» заменён!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(халяв[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Дар незаслуженный", msg: "Корыстная «халява» обличена!" }
+    ];
+
+    // === 4. ОФИСНЫЙ НОВОЯЗ И БИЗНЕС-АНГЛИЦИЗМЫ ===
+    const corporateRules = [
+      { regex: /(?:^|[^а-яёa-z0-9])(дедлайн[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Срок урочный", msg: "Офисный англицизм «дедлайн» переведён!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(коворкинг[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Общинная изба труда", msg: "Слово «коворкинг» заменено на родное!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(дейлик[а-яё]*|созвон[а-яё]*|митинг[а-яё]*|брейншторм[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Соборное совещание", msg: "Офисный новояз преображён!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(таск[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Поручение державное", msg: "Англицизм «таска» заменён на «поручение»!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(фидбэк[а-яё]*|фидбек[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Отклик праведный", msg: "Слово «фидбэк» переведено!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(асап|asap)(?=[^а-яёa-z0-9]|$)/gi, replace: "В сию же годину", msg: "Заморское «асап» исправлено!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(кейс[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Дело показательное", msg: "Бизнес-слово «кейс» очищено!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(инсайт[а-яё]*|инсайд[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Озарение свыше", msg: "Слово «инсайт» заменено духовным!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(нетворкинг[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Круговая порука добрая", msg: "Англицизм «нетворкинг» переведён!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(коуч[а-яё]*|ментор[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Наставник мудрый", msg: "Иноземное звание «коуч» заменено!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(скилл[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Ремесло и сноровка", msg: "Слово «скилл» переведено на русский!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(аутсорс[а-яё]*|фриланс[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Вольный промысел", msg: "Бизнес-англицизм очищен!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(оффер[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Грамота призывная", msg: "Слово «оффер» переведено!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(факап[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Оплошность досадная", msg: "Грубый англицизм «факап» пресечён!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(воркшоп[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Мастерская ремесленная", msg: "Слово «воркшоп» переведено!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(стартап[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Начинание созидательное", msg: "Англицизм «стартап» заменён!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(тимлид[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Воевода дружины", msg: "Звание «тимлид» русифицировано!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(эйчар[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Боярин кадровый", msg: "Слово «эйчар» переведено!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(прокрастинац[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Грех праздности и лености", msg: "Праздная прокрастинация обличена!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(выгоран[иеяю][а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Оскудение сил душевных", msg: "Термин «выгорание» преображён!" }
+    ];
+
+    // === 5. ИГРОМАНСКИЙ ЖАРГОН (ГЕЙМЕРСКИЙ СЛЕНГ) ===
+    const gamerRules = [
+      { regex: /(?:^|[^а-яёa-z0-9])(нуб[а-яё]*|нубас[а-яё]*|рачин[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Ученик неопытный", msg: "Игроманское прозвище «нуб» исправлено!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(катк[аиуеой])(?=[^а-яёa-z0-9]|$)/gi, replace: "Ратное состязание", msg: "Геймерский сленг «катка» облагорожен!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(имб[аоуе][а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Сила богатырская", msg: "Слово «имба» заменено на «Сила богатырская»!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(читер[а-яё]*|читы)(?=[^а-яёa-z0-9]|$)/gi, replace: "Лукавый обманщик", msg: "Игровое плутовство обличено!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(афк|afk)(?=[^а-яёa-z0-9]|$)/gi, replace: "Отлучка телесная", msg: "Сокращение «афк» переведено!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(ливнут[ьа-яё]*|ливнул[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Малодушно отступить", msg: "Геймерское «ливнуть» исправлено!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(залутат[ьа-яё]*|лутат[ьа-яё]*|лут)(?=[^а-яёa-z0-9]|$)/gi, replace: "Трофей ратный", msg: "Игровой сленг «лут» переведён!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(нерфит[ьа-яё]*|понерфит[ьа-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Укрощение гордыни", msg: "Геймерский жаргон очищен!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(бафф[а-яё]*|бафнут[ьа-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Благословение на силу", msg: "Слово «бафф» заменено каноническим!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(квест[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Испытание путника", msg: "Англицизм «квест» переведён!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(агрит[ьа-яё]*|агрится|агр)(?=[^а-яёa-z0-9]|$)/gi, replace: "Впадать во гнев", msg: "Сленг «агриться» заменён!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(изи|изич)(?=[^а-яёa-z0-9]|$)/gi, replace: "Легко с Божией помощью", msg: "Возглас «изи» облагорожен!" }
+    ];
+
+    // === 6. ОККУЛЬТИЗМ, ПАГУБНЫЕ СТРАСТИ И БОГОБОРЧЕСТВО ===
     const occultRules = [
-      { regex: /(?:^|[^а-яёa-z0-9])(гороскоп[а-яё]*|астролог[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Промысел Всевышнего" },
-      { regex: /(?:^|[^а-яёa-z0-9])(таро|таролог[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Пустое гадание" },
-      { regex: /(?:^|[^а-яёa-z0-9])(порч[а-яё]+|сглаз[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Маловерие" }
+      { regex: /(?:^|[^а-яёa-z0-9])(гороскоп[а-яё]*|астролог[а-яё]*|натальн[а-яё]*|ретроградн[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Промысел Всевышнего", msg: "Звездочётство и астрология пресечены!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(таро|таролог[а-яё]*|гадалк[а-яё]*|экстрасенс[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Пустое гадание", msg: "Гадание на картах Таро обличено!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(порч[а-яё]+|сглаз[а-яё]*|приворот[а-яё]*|эзотерик[а-яё]*|чакр[а-яё]*|карм[аыуе])(?=[^а-яёa-z0-9]|$)/gi, replace: "Суеверное маловерие", msg: "Оккультные суеверия отринуты!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(вейп[а-яё]*|подик[а-яё]*|одноразк[а-яё]*|жиж[ауеи])(?=[^а-яёa-z0-9]|$)/gi, replace: "Дым праздный бесовский", msg: "Пагубное парение вейпов обличено!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(бухат[ьа-яё]*|набухат[ьа-яё]*|бухл[оау]|пьянк[а-яё]*|опохмел[а-яё]*)(?=[^а-яёa-z0-9]|$)/gi, replace: "Трезвение ума", msg: "Призывы к пьянству пресечены!" },
+      { regex: /(?:^|[^а-яёa-z0-9])(казино|ставк[иа]|лудоман[а-яё]*|слоты|депнуть)(?=[^а-яёa-z0-9]|$)/gi, replace: "Разорительное стяжательство", msg: "Азартные игры и ставки пресечены!" }
     ];
 
     const blasphemyRules = [
@@ -788,7 +1079,7 @@
       "67", "52", "1488", "104", "666",
       "навальный", "навального", "навальному", "навальным", "навальном",
       "пидор", "пидорас", "педик", "педрила",
-      "лох", "лоха", "лохи", "гей", "геи"
+      "квадробер", "квадробика", "хоббихорсинг", "скибиди", "чиназес", "зашквар", "чушпан"
     ]);
 
     let totalCensoredCount = 0;
@@ -885,13 +1176,20 @@
       const list = [];
       const shieldMat = document.getElementById('shieldMat');
       const shieldSlang = document.getElementById('shieldSlang');
+      const shieldJargon = document.getElementById('shieldJargon');
+      const shieldCorp = document.getElementById('shieldCorp');
+      const shieldGamer = document.getElementById('shieldGamer');
       const shieldOccult = document.getElementById('shieldOccult');
-      const shieldGod = document.getElementById('shieldGod');
 
       if (!shieldMat || shieldMat.checked) list.push(...matRules);
-      if (shieldSlang && shieldSlang.checked) list.push(...slangRules);
-      if (shieldOccult && shieldOccult.checked) list.push(...occultRules);
-      if (!shieldGod || shieldGod.checked) list.push(...blasphemyRules);
+      if (!shieldSlang || shieldSlang.checked) list.push(...slangRules);
+      if (!shieldJargon || shieldJargon.checked) list.push(...jargonRules);
+      if (!shieldCorp || shieldCorp.checked) list.push(...corporateRules);
+      if (!shieldGamer || shieldGamer.checked) list.push(...gamerRules);
+      if (!shieldOccult || shieldOccult.checked) {
+        list.push(...occultRules);
+        list.push(...blasphemyRules);
+      }
       list.push(...politicalRules);
       list.push(...forbiddenNumbersRules);
       return list;
@@ -999,16 +1297,16 @@
       }
     }
 
-    // Storage Management (Local Storage + Cloud)
+    // Storage Management (Local Storage)
     const STORAGE_KEY_NOTES = 'monolith_patriot_notes_v1';
     const STORAGE_KEY_FOLDERS = 'monolith_patriot_folders_v1';
 
     let notes = [
       {
         id: "note-1",
-        title: "О праведном труде и созидании",
+        title: "О праведном труде и чистоте речи",
         folder: "Особая папка",
-        content: "Каждый день начинай с чистым сердцем и мыслью об укреплении Отечества. Созидательный труд во славу земли родной — высшая добродетель.",
+        content: "Каждый день начинай с чистым сердцем и мыслью об укреплении Отечества. Созидательный труд во славу земли родной — высшая добродетель, а чистота родного слова — щит духа.",
         updatedAt: Date.now()
       }
     ];
@@ -1403,9 +1701,30 @@
       });
     }
 
+    setupModal('btnOpenDictionary', 'dictionaryModal', ['closeDictionaryModal', 'btnCloseDictionaryBottom']);
+    setupModal('btnOpenDictFromShield', 'dictionaryModal', ['closeDictionaryModal', 'btnCloseDictionaryBottom']);
     setupModal('btnOpenPrayers', 'prayersModal', ['closePrayersModal', 'btnClosePrayersBottom']);
     setupModal('btnOpenPsalm', 'psalmModal', ['closePsalmModal']);
     setupModal('btnOpenCalc', 'calcModal', ['closeCalcModal']);
+
+    // Try banned word directly from the Dictionary modal
+    document.querySelectorAll('.btnTryWord').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const word = e.currentTarget.getAttribute('data-word');
+        const dictModal = document.getElementById('dictionaryModal');
+        if (dictModal) {
+          dictModal.classList.add('hidden');
+          dictModal.style.display = 'none';
+        }
+        if (window.innerWidth < 768) {
+          setMobileView('editor');
+        }
+        noteContent.value += (noteContent.value.endsWith(' ') || !noteContent.value ? '' : ' ') + word;
+        sanitizeField(noteContent, true);
+        updateStats();
+        scheduleAutoSave();
+      });
+    });
 
     // Prize 777 Modal listeners
     const closePrizeBtn = document.getElementById('closePrizeModal');
